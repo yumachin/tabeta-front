@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+ご飯に特化したSNSアプリの ”Tabeta!” です。
 
-## Getting Started
+## 概要
 
-First, run the development server:
+友達のご飯を気軽に見られるようにして、自分の食事の記録を楽しく共有できる場を提供します。
+また、新しい食のアイデアを発見し、食の好みやライフスタイルを共有することで、より豊かな食文化を楽しむことができます。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+さらに、日々の食事を振り返ることで、健康管理や食生活の改善に役立てられます。そして、上京して一人暮らしをしている家族や子供の食事の様子を遠くからでも見守れるようにすることで、食事を通じてつながりを感じられるようなアプリを目指しています。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 利用者モデル
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 大学生, 若者層 → 友達同士で気軽にご飯の共有をしたい人, 自炊のモチベを上げたい大学生
+- 社会人 → 食事記録をかんたんにしたい人, 同僚や友達にディナーを共有したい人
+- 子供と別居してる子持ちの親 → 一人暮らしの子供の食生活見守りたい人
+- 料理に興味ある人 → 自作料理を発信したい人, 他の人からインスピレーションを得たい人
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 利用シーン（例）
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **日常的に友達と食事をシェアをしたい時**
+- 食生活記録をしたい時
+- 親が上京した子供がなにを食べてるか確認する時
+- 自分の中の新しいアイデアを広げたい時
+- 料理好きの人がアウトプットしたい時 (承認欲求)
+- 好きな料理が似てる人を探したい時　　　　　　　　　　etc....
