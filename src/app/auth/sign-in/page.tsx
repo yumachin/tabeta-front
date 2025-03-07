@@ -1,20 +1,11 @@
-"use client"
+"use client";
 
-import { Eye, EyeOff } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
+// import { useState } from "react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import AuthTitle from "@/components/auth/_atoms/AuthTitle"
-import AuthDescription from "@/components/auth/_atoms/AuthDescription"
-import InputTitle from "@/components/auth/_atoms/InputTitle"
-import InputForm from "@/components/auth/_atoms/InputForm"
-import AuthForm from "@/components/auth/_organisms/AuthForm"
+import AuthForm from "@/components/auth/_organisms/AuthForm";
 
-export default function SignInPage() {
-  const [showPassword, setShowPassword] = useState(false)
+export default function Page() {
+  // const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -22,5 +13,5 @@ export default function SignInPage() {
         <AuthForm authMode="sign-in" />
       </div>
     </div>
-  )
-}
+  );
+};

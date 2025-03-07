@@ -1,12 +1,6 @@
-import React from 'react'
 import { Input } from "@/components/ui/input";
 
-interface AuthInputFormProps {
-  inputType: "username" | "email" | "password";
-  showPassword?: boolean;
-}
-
-const InputForm = (props: AuthInputFormProps) => {
+export default function InputForm(props: AuthInputFormProps) {
   let placeholderCss;
   switch (props.inputType) {
     case "username":
@@ -33,7 +27,10 @@ const InputForm = (props: AuthInputFormProps) => {
 
   return (
     <Input id={props.inputType} type={typeCss} placeholder={placeholderCss} required className="w-full" />
-  )
-}
+  );
+};
 
-export default InputForm
+type AuthInputFormProps = {
+  inputType: "username" | "email" | "password";
+  showPassword?: boolean;
+}

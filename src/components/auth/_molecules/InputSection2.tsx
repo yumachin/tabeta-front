@@ -1,20 +1,14 @@
 // パスワード用Input
+"use client";
 
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Eye, EyeOff } from 'lucide-react'
-import Link from 'next/link'
-import React, { useState } from 'react'
-import InputTitle from '../_atoms/InputTitle'
-import InputForm from '../_atoms/InputForm'
-import ShowButton from '../_atoms/ShowButton'
-import AuthDescription from '../_atoms/AuthDescription'
+import { useState } from 'react';
 
-interface AuthFormProps {
-    authMode: "sign-in" | "sign-up";
-}
+import AuthDescription from '../_atoms/AuthDescription';
+import InputForm from '../_atoms/InputForm';
+import InputTitle from '../_atoms/InputTitle';
+import ShowButton from '../_atoms/ShowButton';
 
-const InputSection2 = (props: AuthFormProps) => {
+export default function InputSection2(props: AuthFormProps) {
 	const [showPassword, setShowPassword] = useState(false);
 
 	return (
@@ -31,7 +25,9 @@ const InputSection2 = (props: AuthFormProps) => {
 				</div>
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default InputSection2
+type AuthFormProps = {
+	authMode: "sign-in" | "sign-up";
+}

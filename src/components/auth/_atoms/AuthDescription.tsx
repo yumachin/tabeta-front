@@ -1,10 +1,4 @@
-import React from 'react'
-
-interface AuthFormProps {
-  authMode: "sign-in" | "sign-up" | "password";
-}
-
-const AuthDescription = (props: AuthFormProps) => {
+export default function AuthDescription(props: AuthFormProps) {
   let description;
   switch (props.authMode) {
     case "sign-in":
@@ -22,7 +16,9 @@ const AuthDescription = (props: AuthFormProps) => {
     <p className="text-sm text-gray-500">
       {description}
     </p>
-  )
-}
+  );
+};
 
-export default AuthDescription
+type AuthFormProps = {
+  authMode: "sign-in" | "sign-up" | "password";
+}
