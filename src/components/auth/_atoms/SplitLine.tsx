@@ -1,6 +1,4 @@
-import React from 'react'
-
-const SplitLine = () => {
+export default function SplitLine() {
   return (
     <div className="relative">
         <div className="absolute inset-0 flex items-center">
@@ -10,7 +8,5 @@ const SplitLine = () => {
             <span className="px-2 text-gray-500 bg-white">または</span>
         </div>
     </div>
-  )
-}
-
-export default SplitLine
+  );
+};

@@ -1,18 +1,15 @@
-import React from 'react'
-import AuthTitle from '../_atoms/AuthTitle'
-import AuthDescription from '../_atoms/AuthDescription'
+import AuthDescription from '../_atoms/AuthDescription';
+import AuthTitle from '../_atoms/AuthTitle';
 
-interface AuthFormProps {
-  authMode: "sign-in" | "sign-up";
-}
-
-const AuthHeader = (props: AuthFormProps) => {
+export default function AuthHeader(props: AuthFormProps) {
   return (
     <div className="space-y-2 text-center">
         <AuthTitle authMode={props.authMode} />
         <AuthDescription authMode={props.authMode} />
     </div>
-  )
-}
+  );
+};
 
-export default AuthHeader
+type AuthFormProps = {
+  authMode: "sign-in" | "sign-up";
+}

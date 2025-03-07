@@ -1,11 +1,6 @@
-import React from 'react'
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/label";
 
-interface AuthInputFormProps {
-  inputType: "username" | "email" | "password";
-}
-
-const InputTitle = (props: AuthInputFormProps) => {
+export default function InputTitle(props: AuthInputFormProps) {
   let title;
   switch (props.inputType) {
     case "username":
@@ -23,7 +18,9 @@ const InputTitle = (props: AuthInputFormProps) => {
     <Label htmlFor={props.inputType}>
       {title}
     </Label>
-  )
-}
+  );
+};
 
-export default InputTitle
+type AuthInputFormProps = {
+  inputType: "username" | "email" | "password";
+}

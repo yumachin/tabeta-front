@@ -1,11 +1,6 @@
 import { Eye, EyeOff } from 'lucide-react';
 
-interface ShowButtonProps {
-    showPassword: boolean;            
-    setShowPassword: (showPassword: boolean) => void;
-}
-
-const ShowButton = (props: ShowButtonProps) => {
+export default function ShowButton(props: ShowButtonProps) {
   return (
     <button
         type="button"
@@ -14,7 +9,10 @@ const ShowButton = (props: ShowButtonProps) => {
     >
         {props.showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
     </button>
-  )
-}
+  );
+};
 
-export default ShowButton
+type ShowButtonProps = {
+  showPassword: boolean;            
+  setShowPassword: (showPassword: boolean) => void;
+}

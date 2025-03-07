@@ -2,7 +2,7 @@ import { Home, Search, PlusSquare, Heart, User, Menu, Share2 } from "lucide-reac
 import Image from "next/image"
 import Link from "next/link"
 
-export default function ProfilePage() {
+export default function Page() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Header */}
