@@ -16,7 +16,7 @@ export default function FirstHeader() {
 
   return (
     <div className="container flex items-center justify-between h-15 mt-1 sm:mt-3 p-4 mx-auto">
-      {pathname === "/profile" ? <Title /> : <Logo />}
+      {pathname === "/" || "/LP" ? <Logo /> : <Title /> }
       {isAuth && <ProflieIcon /> }
       {(pathname === "/LP" && !isAuth) && <AuthButtons /> }
     </div>
