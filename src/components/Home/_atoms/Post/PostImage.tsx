@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-export default function PostImage() {
+export default function PostImage(props: PostImageProps) {
   return (
     <Image
-      src="/placeholder.svg?height=600&width=600"
+      src={props.image_path}
       width={600}
       height={600}
       alt=""
@@ -11,3 +11,7 @@ export default function PostImage() {
     />
   );
 };
+
+type PostImageProps = {
+  image_path: string;
+}
