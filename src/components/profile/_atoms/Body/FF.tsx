@@ -7,7 +7,7 @@ import { User } from "@/types/types";
 export default function FF(props: FFProps) {
   const router = useRouter();
   const handleNavigation = () => {
-    router.push(`/ff?id=${props.user.id}&name=${props.user.name}`);
+    router.push(`/ff?id=${props.user.id}&name=${props.user.user_name}`);
   };
   
   return (

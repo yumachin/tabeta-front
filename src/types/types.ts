@@ -1,7 +1,7 @@
 export type User = {
   id: number;
   profile_image_path: string;
-  name: string;
+  user_name: string;
   account_id: string;
   description: string;
   is_public: boolean;

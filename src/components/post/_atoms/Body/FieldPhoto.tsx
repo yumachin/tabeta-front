@@ -10,7 +10,7 @@ export default function FieldPhoto({
   name
 }: FieldPhotoProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(value || null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -68,7 +68,7 @@ export default function FieldPhoto({
             accept="image/*"
             onChange={handleImageChange}
             className="hidden"
-            id={name} // 名前を動的に変更して、react-hook-formのフィールドと一致させる
+            id={name}
           />
           <label htmlFor={name} className="flex flex-col items-center cursor-pointer">
             <ImageIcon className="w-12 h-12 text-gray-400 mb-2" />
