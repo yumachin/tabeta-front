@@ -1,17 +1,109 @@
-import FieldForm from "../../_atoms/Body/FieldForm";
-import FieldName from "../../_atoms/Body/FieldName";
+import { Control, Controller, FieldErrors } from "react-hook-form";
 
-import { PostField } from "@/types/types";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { PostingType } from "@/types/types";
+
+import FieldPhoto from "../../_atoms/Body/FieldPhoto";
 
 export default function Field(props: FieldProps) {
   return (
-    <div className="space-y-2">
-      <FieldName str_id={props.field.str_id} label={props.field.label} />
-      <FieldForm id={props.field.id} str_id={props.field.str_id} type={props.field.type} />
+    <div className="space-y-8 container px-4 py-6 mx-auto max-w-2xl">
+      <div className="space-y-3">
+        <Label htmlFor="Image_path">写真</Label>
+        <Controller
+          control={props.control}
+          name="Image_path"
+          render={({ field }) => <FieldPhoto {...field} />}
+        />
+        {props.errors.Image_path && <p className="text-red-500 text-xs">{props.errors.Image_path.message}</p>}
+      </div>
+      <div className="space-y-3">
+        <Label htmlFor="time_section">時間帯</Label>
+        <Controller
+          control={props.control}
+          name="time_section"
+          render={({ field }) => (
+            <Select {...field}>
+              <SelectTrigger id="time_section" className="w-full py-5">
+                <SelectValue placeholder="時間帯を選択" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem className="w-full py-4" value="morning">
+                  朝
+                </SelectItem>
+                <SelectItem className="w-full py-4" value="afternoon">
+                  昼
+                </SelectItem>
+                <SelectItem className="w-full py-4" value="night">
+                  晩
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          )}
+        />
+        {props.errors.time_section && <p className="text-red-500 text-xs">{props.errors.time_section.message}</p>}
+      </div>
+      <div className="space-y-3">
+        <Label>公開設定</Label>
+        <Controller
+          control={props.control}
+          name="is_public"
+          defaultValue={true} 
+          render={({ field }) => (
+            <RadioGroup value={field.value?.toString()} onValueChange={(val) => field.onChange(val === "true")} className="flex space-x-4">
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="true" id="is_public" />
+                <Label htmlFor="is_public" className="font-normal text-gray-700">
+                  公開
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="false" id="is_private" />
+                <Label htmlFor="is_private" className="font-normal text-gray-700">
+                  非公開
+                </Label>
+              </div>
+            </RadioGroup>
+          )}
+        />
+      </div>
+      <div className="space-y-3">
+        <Label htmlFor="title">タイトル</Label>
+        <Controller
+          control={props.control}
+          name="title"
+          render={({ field }) => <Input id="title" type="text" className="w-full" {...field} />}
+        />
+        {props.errors.title && <p className="text-red-500 text-xs">{props.errors.title.message}</p>}
+      </div>
+      <div className="space-y-3">
+        <Label htmlFor="tags">タグ付け</Label>
+        <Controller
+          control={props.control}
+          name="tags"
+          render={({ field }) => <Input id="tags" type="text" className="w-full" {...field} />}
+        />
+      </div>
+      <div className="space-y-3">
+        <Label htmlFor="description">説明</Label>
+        <Controller
+          control={props.control}
+          name="description"
+          render={({ field }) => (
+            <Textarea id="description" placeholder="説明を入力" className="w-full min-h-[100px]" {...field} />
+          )}
+        />
+      </div>
+      <div className="my-24"></div>
     </div>
   );
 };
 
 type FieldProps = {
-  field: PostField;
+  control: Control<PostingType>;
+  errors: FieldErrors<PostingType>;
 }

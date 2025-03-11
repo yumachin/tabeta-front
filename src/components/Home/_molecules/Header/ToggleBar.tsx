@@ -1,16 +1,23 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
-export default function ToggleBar(props: ToggleBarrProps) {
-
+export default function ToggleBar(props: ToggleBarProps) {
+  const pathname = usePathname();
   const handleReccomendClick = () => {
-    props.setButtonState(0);
-    props.onPrev()
-  }
+    if (props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState) {
+      props.setButtonState(0);
+      props.onPrev()
+    }
+  };
 
   const handleFollowClick = () => {
-    props.setButtonState(1);
-    props.onNext()
-  }
+    if (props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState) {
+      props.setButtonState(1);
+      props.onNext()
+    }
+  };
 
   return (
     <div className="flex border-b border-gray-200">
@@ -18,7 +25,7 @@ export default function ToggleBar(props: ToggleBarrProps) {
         className={`flex-1 py-3 font-medium text-center ${props.buttonState === 0 ? "text-orange-500" : "text-gray-500"}`}
         onClick={handleReccomendClick}
       >
-        おすすめ
+        {pathname === "/" ? "おすすめ" : "フォロワー"}
       </button>
       <button 
         className={`flex-1 py-3 font-medium text-center ${props.buttonState === 1 ? "text-orange-500" : "text-gray-500"}`}
@@ -30,9 +37,9 @@ export default function ToggleBar(props: ToggleBarrProps) {
   );
 };
 
-type ToggleBarrProps = {
-  onNext: () => void;
-  onPrev: () => void;
-  buttonState: number;
-  setButtonState: Dispatch<SetStateAction<number>>;
+type ToggleBarProps = {
+  onNext?: () => void;
+  onPrev?: () => void;
+  buttonState?: number;
+  setButtonState?: Dispatch<SetStateAction<number>>;
 }

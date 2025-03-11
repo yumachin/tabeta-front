@@ -5,11 +5,11 @@ import { GetLPPost } from "@/types/types";
 
 export default function PostFooter(props: PostFooterProps) {
   return (
-    <>
+    <div className="mx-2">
       <Buttons />
       <LikesCount likes={props.post.likes} />
       <UserCommentInf post={props.post} />
-    </>
+    </div>
   );
 };
 

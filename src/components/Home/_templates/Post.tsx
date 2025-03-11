@@ -14,8 +14,6 @@ export default function Post(props: PostProps) {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     arrows: false,
     afterChange: (current: number) => {
       if (props.setButtonState) {
@@ -30,8 +28,8 @@ export default function Post(props: PostProps) {
 
   return (
     <Slider {...settings} ref={props.ref} >
-      <div className='flex flex-col px-4'>
-        {props.posts.map((post) => (
+      <div className='flex flex-col px-2'>
+        {props.posts.map((post: GetLPPost) => (
           <div key={post.id} className="py-4 border-b border-gray-200">
             <PostedUserInf postUserInf={post.postUserInf} created_at={post.created_at} />
             <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
@@ -43,7 +41,7 @@ export default function Post(props: PostProps) {
       </div>
       
       {props.followedPosts && (
-        <div className='flex flex-col px-4'>
+        <div className='flex flex-col px-2'>
           {props.followedPosts.map((followedPost: GetLPPost) => (
             <div key={followedPost.id} className="py-4 border-b border-gray-200">
               <PostedUserInf postUserInf={followedPost.postUserInf} created_at={followedPost.created_at} />

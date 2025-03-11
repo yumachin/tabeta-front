@@ -7,7 +7,7 @@ export default function UserInf(props: userInfProps) {
   return (
     <div className="flex-1">
       <Name user={props.user} />
-      <AccountID accountID={props.user.accountID} />
+      <AccountID account_id={props.user.account_id} />
       <FF user={props.user} />
     </div>
   );

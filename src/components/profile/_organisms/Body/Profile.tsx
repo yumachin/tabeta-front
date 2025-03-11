@@ -1,9 +1,8 @@
+import { User } from "@/types/types";
+
 import Icon from "../../_atoms/Body/Icon";
 import EditButton from "../../_molecules/Body/EditButton";
 import UserInf from "../../_molecules/Body/UserInf";
-
-import { User } from "@/types/types";
-
 
 export default function Profile(props: ProfileProps) {
   return (
@@ -13,6 +12,11 @@ export default function Profile(props: ProfileProps) {
         <UserInf user={props.user}/>
       </div>
       <EditButton />
+      <div className="mt-6">
+        <p className="text-sm">
+          {props.user.description}
+        </p>
+      </div>
     </section>
   );
 };

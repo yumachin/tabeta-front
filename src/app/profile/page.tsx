@@ -12,7 +12,8 @@ export default function Page() {
     {
       ProfileImagePath: "/placeholder.svg?height=80&width=80", 
       name: "Kiyoya", 
-      accountID: "kiyoya123", 
+      account_id: "kiyoya123",
+      description: "",
       is_public: true, 
       follower: 98,
       follow: 142
