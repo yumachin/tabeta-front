@@ -12,7 +12,10 @@ export default function Profile(props: ProfileProps) {
         <Icon image_path={props.user.profile_image_path}/>
         <UserInf user={props.user}/>
       </div>
-      {props.id ? <FFButton isFollowing={props.isFollowing} handleFollowed={props.handleFollowed} handleDeleteFollowed={props.handleDeleteFollowed} /> : <EditButton />}
+      {props.id ?
+        <FFButton isFollowing={props.isFollowing} handleFollowed={props.handleFollowed} handleDeleteFollowed={props.handleDeleteFollowed} /> :
+        <EditButton user={props.user} />
+      }
       <div className="mt-6">
         <p className="text-sm">
           {props.user.description}

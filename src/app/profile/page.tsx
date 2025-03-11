@@ -4,6 +4,7 @@ import Posts from "@/components/profile/_organisms/Body/Posts";
 import Profile from "@/components/profile/_organisms/Body/Profile";
 import { MyPostType, User } from "@/types/types";
 
+import DefaultUserIcon from "../../../public/DefaultUserIcon.png";
 import PullUpLogo from "../../../public/pullup.png";
 
 export default function Page() {
@@ -11,8 +12,9 @@ export default function Page() {
   const user: User =
     {
       id: 6,
-      profile_image_path: "/placeholder.svg?height=80&width=80", 
-      name: "Kiyoya", 
+      // デフォルトの写真がこれ
+      profile_image_path: DefaultUserIcon.src, 
+      user_name: "Kiyoya", 
       account_id: "kiyoya123",
       description: "",
       is_public: true, 

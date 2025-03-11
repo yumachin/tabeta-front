@@ -3,13 +3,13 @@
 // import axios from "axios";
 import { use, useEffect, useState } from "react";
 
-import PullUpLogo from "../../../../public/pullup.png";
-
 import Footer from '@/components/Home/_organisms/Footer/Footer';
 import Header from "@/components/profile/_molecules/Header/Header";
 import Posts from '@/components/profile/_organisms/Body/Posts';
 import Profile from '@/components/profile/_organisms/Body/Profile';
 import { MyPostType, User } from '@/types/types';
+
+import PullUpLogo from "../../../../public/pullup.png";
 
 export default function Page(props: PageProps) {
   const propsParams = use(props.params);
@@ -54,7 +54,7 @@ export default function Page(props: PageProps) {
     {
       id: 7,
       profile_image_path: "/placeholder.svg?height=80&width=80", 
-      name: "Yuma", 
+      user_name: "Yuma", 
       account_id: "yuma5542",
       description: "",
       is_public: true, 
