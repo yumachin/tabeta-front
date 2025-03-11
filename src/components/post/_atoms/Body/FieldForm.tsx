@@ -1,7 +1,7 @@
-import FieldPhoto from "./FieldPhoto";
-
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+import FieldPhoto from "./FieldPhoto";
 
 export default function FieldForm(props: FieldFormProps) {
   return (

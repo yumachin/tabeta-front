@@ -7,7 +7,7 @@ import IconName from '../../_atoms/Footer/IconName';
 export default function NavButton(props: NavButtonProps) {
   const icons = [Home, PlusSquare, User];
   const icon = icons[props.iconID];
-  const links = ["", "", "post", "profile", "profile"];
+  const links = ["", "post", "profile"];
   const link = links[props.iconID];
 
   return (

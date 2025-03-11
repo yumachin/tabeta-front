@@ -7,9 +7,9 @@ export default function Title() {
   return (
     <>
       {pathname === "/post" ? (
-        <h1 className="text-xl font-bold text-orange-500">投稿</h1>
+        <h1 className="text-2xl font-bold text-orange-500">Post</h1>
       ) : (
-        <h1 className="text-xl font-bold text-orange-500">プロフィール</h1>
+        <h1 className="text-2xl font-bold text-orange-500">Profile</h1>
       )}
     </>
   );

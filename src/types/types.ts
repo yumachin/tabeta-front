@@ -1,14 +1,15 @@
-export type PostField = {
-  id: number;
-  str_id: string;
-  label: string;
-  type: string;
-}
+// export type PostField = {
+//   id: number;
+//   str_id: string;
+//   label: string;
+//   type: string;
+// }
 
 export type User = {
   ProfileImagePath: string;
   name: string;
-  accountID: string;
+  account_id: string;
+  description: string;
   is_public: boolean;
   follower: number;
   follow: number;
@@ -46,4 +47,21 @@ export type GetLPPost = {
   likes: number;
   description: string | null; 
   tags: string[];
+}
+
+export type FFReration = {
+  id: number;
+  ProfileImagePath: string;
+  name: string;
+  account_id: string;
+  description: string;
+}
+
+export type PostingType = {
+  Image_path: string;
+  time_section: string;
+  is_public: boolean;
+  title: string;
+  tags?: string[];
+  description?: string;
 }

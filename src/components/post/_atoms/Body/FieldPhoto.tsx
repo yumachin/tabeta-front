@@ -2,18 +2,26 @@
 
 import { X, ImageIcon } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, ChangeEvent } from "react";
 
-export default function FieldPhoto() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+export default function FieldPhoto({
+  onChange,
+  value,
+  name
+}: FieldPhotoProps) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(value || null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setSelectedImage(reader.result as string);
+        const base64Image = reader.result as string;
+        setSelectedImage(base64Image);
+        if (onChange) {
+          onChange(base64Image);
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -24,22 +32,32 @@ export default function FieldPhoto() {
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
+    if (onChange) {
+      onChange(null); 
+    }
   };
 
   return (
     <>
       {selectedImage ? (
-        <div className="relative aspect-square">
+        <div className="relative flex justify-center">
           <Image
             src={selectedImage || "/placeholder.svg"}
             alt="Preview"
-            className="object-cover w-full h-full rounded-lg"
+            width={24}
+            height={24}
+            style={{
+              width: "80%",
+              height: "auto",
+            }}
+            layout="intrinsic"
+            className="object-contain rounded-lg"
           />
           <button
             onClick={removeImage}
-            className="absolute top-2 right-2 p-2 bg-black/50 rounded-full text-white hover:bg-black/70"
+            className="absolute top-1 right-11 p-1 bg-black/50 rounded-full text-white hover:bg-black/70"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
       ) : (
@@ -50,9 +68,9 @@ export default function FieldPhoto() {
             accept="image/*"
             onChange={handleImageChange}
             className="hidden"
-            id="image-upload"
+            id={name} // 名前を動的に変更して、react-hook-formのフィールドと一致させる
           />
-          <label htmlFor="image-upload" className="flex flex-col items-center cursor-pointer">
+          <label htmlFor={name} className="flex flex-col items-center cursor-pointer">
             <ImageIcon className="w-12 h-12 text-gray-400 mb-2" />
             <span className="text-sm text-gray-500">タップして写真を選択</span>
           </label>
@@ -61,3 +79,9 @@ export default function FieldPhoto() {
     </>
   );
 };
+
+type FieldPhotoProps = {
+  onChange?: (value: string | null) => void; 
+  value: string | null;
+  name?: string;
+}

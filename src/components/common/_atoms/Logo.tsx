@@ -19,6 +19,6 @@ export default function Logo () {
   };
 
   return (
-    <Image src={TabetaLogo} alt="Logo" className="w-40 h-auto sm:w-50 sm:h-auto" onClick={handleClick} />
+    <Image src={TabetaLogo} priority alt="Logo" className="w-40 h-auto sm:w-50 sm:h-auto" onClick={handleClick} />
   );
 };
