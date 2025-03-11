@@ -1,12 +1,6 @@
-// export type PostField = {
-//   id: number;
-//   str_id: string;
-//   label: string;
-//   type: string;
-// }
-
 export type User = {
-  ProfileImagePath: string;
+  id: number;
+  profile_image_path: string;
   name: string;
   account_id: string;
   description: string;
@@ -17,7 +11,7 @@ export type User = {
 
 export type MyPostType = {
   id: number;
-  ImagePath: string; 
+  image_path: string; 
   created_at: string;
   time_section: string;
 }
@@ -41,7 +35,7 @@ export type PostedUserInfType = {
 
 export type GetLPPost = {
   id: number;
-  postUserInf: PostedUserInfType;
+  post_user_inf: PostedUserInfType;
   image_path: string;
   created_at: string;
   likes: number;
@@ -51,14 +45,14 @@ export type GetLPPost = {
 
 export type FFReration = {
   id: number;
-  ProfileImagePath: string;
+  profile_image_path: string;
   name: string;
   account_id: string;
-  description: string;
+  description?: string | null;
 }
 
 export type PostingType = {
-  Image_path: string;
+  image_path: string;
   time_section: string;
   is_public: boolean;
   title: string;

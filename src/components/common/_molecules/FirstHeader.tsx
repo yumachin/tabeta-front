@@ -20,7 +20,7 @@ export default function FirstHeader(props: FirstHeaderProps) {
       {pathname === "/ff" &&
         <>
           <p className='text-xl text-gray-600 font-bold'>{props.name}</p>
-          <div className='h-9 w-10'></div>
+          <div className='h-12 w-12'></div>
         </>
         
       }

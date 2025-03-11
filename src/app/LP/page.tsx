@@ -6,7 +6,7 @@ export default function Page() {
   const posts: GetLPPost[] = [
     {
       id: 1000,
-      postUserInf: {
+      post_user_inf: {
         user_name: "ゆまちん",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -16,11 +16,11 @@ export default function Page() {
       description: null, 
       tags: [
         "プログラミング", "ムズイ", "ネイティブアプリを使いたい気持ち", "牡蠣を食べました"
-    ]
+      ]
     },
     {
       id: 999,
-      postUserInf: {
+      post_user_inf: {
         user_name: "きよさん",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -29,11 +29,12 @@ export default function Page() {
       likes: 4545,
       description: "牡蠣を食べました！", 
       tags: [
+        
       ]
     },
     {
       id: 998,
-      postUserInf: {
+      post_user_inf: {
         user_name: "こーせいいいいいいい",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -47,7 +48,7 @@ export default function Page() {
     },
     {
       id: 997,
-      postUserInf: {
+      post_user_inf: {
         user_name: "こーせいいいいいいい",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },

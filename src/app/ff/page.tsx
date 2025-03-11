@@ -11,71 +11,75 @@ import FF from "@/components/ff/_templates/FF";
 import HeaderAndFooter from "@/components/Home/_templates/HeaderAndFooter";
 import { FFReration } from "@/types/types";
 
-export default function FollowersPage() {
+export default function Page() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  const name = searchParams.get("name");
+
+  console.log("idは、", id);
+  console.log("nameは、", name);
+
+  // id を元に、フォロワーとフォロー中ユーザーを取得
   const followers: FFReration[] = [
     {
       id: 1,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "清澄",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "きよや",
       account_id: "@kiyoya_1106",
-      description: "深層学習｜外部院試｜デジタルツイン｜最適化｜React/Go",
+      description: null,
     },
     {
       id: 2,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "k",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "こーせい",
       account_id: "@k8035004287922",
-      description: "web、AI 勉強中大学3年生📖低学歴だけど一生懸命頑張る🔥",
+      description: "大学3年生",
     },
     {
       id: 3,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "こばやす",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "ゆうま",
       account_id: "@yzdrruQ9EqPT3bq",
-      description: "株式会社LASSICの小林です。リモートワークといえば『Remoguリモグ』を広めたい。IT業界の事をもっと知りたくて質問ポストたくさんしてます☁️エンジニアのみなさんいろいろ教えてください🐼ゲーム大好き。",
+      description: "インターンで勉強した内容をアウトプットしていきたい！最近花粉症のせいで、目も鼻もかゆいです。薬とティッシュが欲しいです。",
     },
     {
       id: 4,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "なつ@ママが在宅副業で…",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "けいた",
       account_id: "@wr0FpdVbQx26325",
-      description: "副業したい子育て世代を応援｜元20代社畜｜自宅にいながら稼ぎたい！！|X運用開始2ヶ月で10万の収益｜人生一度きり、やるしかない！副収入得るぞ🔥",
+      description: "最近は、よく遊びに行ってるよ。",
     },
     {
       id: 5,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "愛の顔面ストレート",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "そうた",
       account_id: "@loveface123",
-      description: "毎日をポジティブに生きる｜写真好き｜旅行｜美味しいもの",
+      description: "彼女のことが大好きです。もう愛が止まりません。"
     }
   ]
-
   const followings: FFReration[] = [
     {
       id: 1,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "清澄",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "きよや",
       account_id: "@kiyoya_1106",
-      description: "深層学習｜外部院試｜デジタルツイン｜最適化｜React/Go",
+      description: null,
     },
     {
       id: 2,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "k",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "こーせい",
       account_id: "@k8035004287922",
-      description: "web、AI 勉強中大学3年生📖低学歴だけど一生懸命頑張る🔥",
+      description: "大学3年生",
     },
     {
       id: 5,
-      ProfileImagePath: "/placeholder.svg?height=60&width=60",
-      name: "愛の顔面ストレート",
+      profile_image_path: "/placeholder.svg?height=60&width=60",
+      name: "そうた",
       account_id: "@loveface123",
-      description: "毎日をポジティブに生きる｜写真好き｜旅行｜美味しいもの",
+      description: "彼女のことが大好きです。もう愛が止まりません。",
     }
   ]
-
-  const searchParams = useSearchParams();
-  const name = searchParams.get("name");
 
   const sliderRef = useRef<Slider | null>(null);
   const [buttonState, setButtonState] = useState<number>(0);

@@ -1,25 +1,28 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { Eye, EyeOff } from "lucide-react"
-import Link from "next/link"
+import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react"
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { useState } from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
 import Header from "@/components/common/_organism/Header";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { SignInType } from "@/types/types"
-import { signInValidation } from "@/utils/validationSchema"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { SignInType } from "@/types/types";
+import { signInValidation } from "@/utils/validationSchema";
 
 export default function Page() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const { control, handleSubmit, formState: { errors } } = useForm<SignInType>({ mode: 'onChange', resolver: zodResolver(signInValidation) });
+  const { control, handleSubmit, formState: { errors } } = useForm<SignInType>({
+    mode: 'onChange',
+    resolver: zodResolver(signInValidation)
+  });
   const formSubmit: SubmitHandler<SignInType> = async (formData) => {
     const loadingToast = toast.loading("ログイン中...");
     try {
@@ -136,5 +139,5 @@ export default function Page() {
         </div>
       </div>
     </>
-  )
-}
+  );
+};

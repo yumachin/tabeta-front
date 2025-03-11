@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import Slider from 'react-slick';
 
@@ -27,54 +28,60 @@ export default function FF(props: FFProps) {
     <Slider {...settings} ref={props.ref} >
       <div className='flex flex-col px-2'>
         {props.followers.map((follower: FFReration) => (
-          <div key={follower.id} className="py-4 border-b border-gray-200">
-            <div className="flex items-start">
-              <Image
-                src={follower.ProfileImagePath || "/placeholder.svg"}
-                width={60}
-                height={60}
-                alt={`${follower.name}'s avatar`}
-                className="rounded-full mr-3"
-              />
-              <div className="flex-1">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <div className="flex items-center">
-                      <p className="font-bold">{follower.name}</p>
+          <Link href={`/profile/${follower.id}`} key={follower.id}>
+            <div className="py-4 border-b border-gray-200">
+              <div className="flex items-start">
+                <Image
+                  src={follower.profile_image_path || "/placeholder.svg"}
+                  width={60}
+                  height={60}
+                  alt={`${follower.name}'s avatar`}
+                  className="rounded-full mr-3"
+                />
+                <div className="flex-1">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="flex items-center">
+                        <p className="font-bold">{follower.name}</p>
+                      </div>
+                      <p className="text-gray-500 text-sm">{follower.account_id}</p>
                     </div>
-                    <p className="text-gray-500 text-sm">{follower.account_id}</p>
                   </div>
+                  {follower.description ? (
+                    <p className="mt-2 text-sm">{follower.description}</p>
+                  ) : <></>}
                 </div>
-                <p className="mt-2 text-sm">{follower.description}</p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className='flex flex-col px-2'>
         {props.followings.map((following: FFReration) => (
-          <div key={following.id} className="py-4 border-b border-gray-800">
-            <div className="flex items-start">
-              <Image
-                src={following.ProfileImagePath || "/placeholder.svg"}
-                width={60}
-                height={60}
-                alt={`${following.name}'s avatar`}
-                className="rounded-full mr-3"
-              />
-              <div className="flex-1">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <div className="flex items-center">
-                      <p className="font-bold">{following.name}</p>
+          <Link href={`/profile/${following.id}`} key={following.id}>
+            <div className="py-4 border-b border-gray-800">
+              <div className="flex items-start">
+                <Image
+                  src={following.profile_image_path || "/placeholder.svg"}
+                  width={60}
+                  height={60}
+                  alt={`${following.name}'s avatar`}
+                  className="rounded-full mr-3"
+                />
+                <div className="flex-1">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="flex items-center">
+                        <p className="font-bold">{following.name}</p>
+                      </div>
+                      <p className="text-gray-500 text-sm">{following.account_id}</p>
                     </div>
-                    <p className="text-gray-500 text-sm">{following.account_id}</p>
                   </div>
+                  <p className="mt-2 text-sm">{following.description}</p>
                 </div>
-                <p className="mt-2 text-sm">{following.description}</p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </Slider>

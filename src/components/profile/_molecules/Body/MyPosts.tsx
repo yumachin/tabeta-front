@@ -1,6 +1,6 @@
-import MyPost from "../../_atoms/Body/MyPost";
-
 import { MyPostType } from "@/types/types";
+
+import MyPost from "../../_atoms/Body/MyPost";
 
 export default function MyPosts(props: MyPostsProps) {
   return (

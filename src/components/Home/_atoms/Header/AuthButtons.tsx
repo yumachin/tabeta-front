@@ -1,6 +1,5 @@
-import { LogIn, UserPlus } from 'lucide-react'
-import Link from 'next/link'
-import React from 'react'
+import { LogIn, UserPlus } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AuthButtons() {
   return (
