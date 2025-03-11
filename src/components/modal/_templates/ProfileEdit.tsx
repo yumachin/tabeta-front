@@ -97,9 +97,9 @@ export function ProfileEdit(props: ProfileEditProps) {
               {selectedImage !== DefaultUserIcon.src && 
                 <Button
                   onClick={removeImage}
-                  className="absolute -top-8 -right-30 bg-transparent shadow-none text-xs text-red-500"
+                  className="absolute -top-6 -right-30 bg-transparent shadow-none text-xs text-red-500"
                 >
-                  <p>写真を削除する</p>
+                  <p>写真を削除</p>
                 </Button>
               }
               <Button

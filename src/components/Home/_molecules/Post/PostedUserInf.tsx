@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { PostedUserInfType } from '@/types/types';
 
@@ -6,17 +7,24 @@ import Time from '../../_atoms/Post/Time';
 import UserName from '../../_atoms/Post/UserName';
 
 export default function PostedUserInf(props: PostedUserInfProps) {
+  const redirectUrl = props.pathname === "/LP" ? 
+  "/auth/sign-in" : `/profile/${props.postUserInf.id}`;
+
   return (
     <div className="flex items-center mb-3">
-      <Image
-        src={props.postUserInf.profile_image_path}
-        width={40}
-        height={40}
-        alt=""
-        className="rounded-full"
-      />
+      <Link href={redirectUrl}>
+        <Image
+          src={props.postUserInf.profile_image_path}
+          width={40}
+          height={40}
+          alt=""
+          className="rounded-full border-1"
+        />
+      </Link>
       <div className="ml-3">
-        <UserName name={props.postUserInf.user_name} />
+        <Link href={redirectUrl}>
+          <UserName name={props.postUserInf.user_name} />
+        </Link>
         <Time created_at={props.created_at} />
       </div>
     </div>
@@ -26,4 +34,5 @@ export default function PostedUserInf(props: PostedUserInfProps) {
 type PostedUserInfProps = {
   postUserInf: PostedUserInfType;
   created_at: string;
+  pathname?: string;
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from 'next/navigation';
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import Slider from 'react-slick';
 
@@ -10,6 +11,7 @@ import PostedUserInf from '../_molecules/Post/PostedUserInf';
 import PostFooter from '../_organisms/Post/PostFooter';
 
 export default function Post(props: PostProps) {
+  const pathname = usePathname(); 
   const settings = {
     dots: false,
     infinite: false,
@@ -31,7 +33,7 @@ export default function Post(props: PostProps) {
       <div className='flex flex-col px-2'>
         {props.posts.map((post: GetLPPost) => (
           <div key={post.id} className="py-4 border-b border-gray-200">
-            <PostedUserInf postUserInf={post.post_user_inf} created_at={post.created_at} />
+            <PostedUserInf postUserInf={post.post_user_inf} created_at={post.created_at} pathname={pathname} />
             <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
               <PostImage image_path={post.image_path} />
             </div>

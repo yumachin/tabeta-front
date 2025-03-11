@@ -59,7 +59,7 @@ export default function FF(props: FFProps) {
       <div className='flex flex-col px-2'>
         {props.followings.map((following: FFReration) => (
           <Link href={`/profile/${following.id}`} key={following.id}>
-            <div className="py-4 border-b border-gray-800">
+            <div className="py-4 border-b border-gray-200">
               <div className="flex items-start">
                 <Image
                   src={following.profile_image_path || "/placeholder.svg"}
