@@ -24,7 +24,7 @@ export default function Post() {
     const loadingToast = toast.loading("投稿中...");
     try {
       await axios.post("http://localhost:3001/all-post", {
-        Image_path: formData.Image_path, 
+        Image_path: formData.image_path, 
         time_section: formData.time_section,
         is_public: formData.is_public,
         title: formData.title,

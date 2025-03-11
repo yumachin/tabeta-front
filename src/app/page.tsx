@@ -11,7 +11,7 @@ export default function Page() {
   const posts: GetLPPost[] = [
     {
       id: 1000,
-      postUserInf: {
+      post_user_inf: {
         user_name: "ゆまちん",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -25,7 +25,7 @@ export default function Page() {
     },
     {
       id: 999,
-      postUserInf: {
+      post_user_inf: {
         user_name: "きよさん",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -38,7 +38,7 @@ export default function Page() {
     },
     {
       id: 998,
-      postUserInf: {
+      post_user_inf: {
         user_name: "こーせいいいいいいい",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -52,7 +52,7 @@ export default function Page() {
     },
     {
       id: 997,
-      postUserInf: {
+      post_user_inf: {
         user_name: "こーせいいいいいいい",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -69,7 +69,7 @@ export default function Page() {
   const followedPosts: GetLPPost[] = [
     {
       id: 923,
-      postUserInf: {
+      post_user_inf: {
         user_name: "俺がフォローしてる人➀",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -83,7 +83,7 @@ export default function Page() {
     },
     {
       id: 519,
-      postUserInf: {
+      post_user_inf: {
         user_name: "俺がフォローしてる人➁",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -97,7 +97,7 @@ export default function Page() {
     },
     {
       id: 325,
-      postUserInf: {
+      post_user_inf: {
         user_name: "俺がフォローしてる人➂",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },

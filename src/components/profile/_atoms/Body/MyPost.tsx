@@ -15,7 +15,7 @@ export default function MyPost(props: MyPostProps) {
         : <MoonStar className="w-4 h-4 text-blue-600"/>}
       </div>
       <Image
-        src={props.post.ImagePath}
+        src={props.post.image_path}
         width={300}
         height={300}
         alt={`Post${props.post.id}`}

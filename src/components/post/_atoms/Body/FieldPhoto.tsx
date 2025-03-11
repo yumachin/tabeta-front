@@ -82,6 +82,6 @@ export default function FieldPhoto({
 
 type FieldPhotoProps = {
   onChange?: (value: string | null) => void; 
-  value: string | null;
+  value?: string | null;
   name?: string;
 }

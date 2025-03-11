@@ -10,11 +10,6 @@ export default function HeaderAndFooter(props: HeaderAndFooterProps) {
   const pathname = usePathname();
   return (
     <div className="flex flex-col min-h-screen">
-      {/* {props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState ? (
-        <Header onNext={props.onNext} onPrev={props.onPrev} buttonState={props.buttonState} setButtonState={props.setButtonState} />
-      ) : (
-        <Header />
-      )} */}
       {props.name ? (
         props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState ? (
           <Header onNext={props.onNext} onPrev={props.onPrev} buttonState={props.buttonState} setButtonState={props.setButtonState} name={props.name} />

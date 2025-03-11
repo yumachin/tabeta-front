@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { Eye, EyeOff } from "lucide-react"
-import Link from "next/link"
+import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react"
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
 import Header from "@/components/common/_organism/Header";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { SignUpType } from "@/types/types"
-import { signUpValidation } from "@/utils/validationSchema"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { SignUpType } from "@/types/types";
+import { signUpValidation } from "@/utils/validationSchema";
 
 export default function Page() {
   const router = useRouter();
@@ -24,6 +24,8 @@ export default function Page() {
     const loadingToast = toast.loading("アカウント作成中...");
     try {
       await axios.post("http://localhost:3001/sign-up", {
+        user_name: formData.user_name,
+        account_id: formData.account_id,
         email: formData.email, 
         password: formData.password
       });

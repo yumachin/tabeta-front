@@ -16,10 +16,10 @@ export default function Field(props: FieldProps) {
         <Label htmlFor="Image_path">写真</Label>
         <Controller
           control={props.control}
-          name="Image_path"
+          name="image_path"
           render={({ field }) => <FieldPhoto {...field} />}
         />
-        {props.errors.Image_path && <p className="text-red-500 text-xs">{props.errors.Image_path.message}</p>}
+        {props.errors.image_path && <p className="text-red-500 text-xs">{props.errors.image_path.message}</p>}
       </div>
       <div className="space-y-3">
         <Label htmlFor="time_section">時間帯</Label>

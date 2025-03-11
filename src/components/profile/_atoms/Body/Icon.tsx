@@ -4,7 +4,7 @@ export default function Icon(props: IconProps) {
   return (
     <div className="flex-shrink-0 mr-4">
       <Image
-        src={props.ImagePath}
+        src={props.image_path}
         width={80}
         height={80}
         alt="UserIcon"
@@ -15,5 +15,5 @@ export default function Icon(props: IconProps) {
 };
 
 type IconProps = {
-  ImagePath: string;
+  image_path: string;
 }
