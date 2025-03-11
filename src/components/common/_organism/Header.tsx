@@ -13,7 +13,7 @@ export default function Header(props: HeaderProps) {
       {pathname === "/ff" ? 
         <FirstHeader name={props.name} /> : <FirstHeader />
       }
-      {pathname === "/" || pathname === "/ff" && (
+      {(pathname === "/" || pathname === "/ff") && (
         props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState ? (
           <ToggleBar onNext={props.onNext} onPrev={props.onPrev} buttonState={props.buttonState} setButtonState={props.setButtonState} />
         ) : (

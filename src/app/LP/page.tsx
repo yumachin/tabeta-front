@@ -7,6 +7,7 @@ export default function Page() {
     {
       id: 1000,
       post_user_inf: {
+        id: 1,
         user_name: "ゆまちん",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -21,6 +22,7 @@ export default function Page() {
     {
       id: 999,
       post_user_inf: {
+        id: 2,
         user_name: "きよさん",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -35,6 +37,7 @@ export default function Page() {
     {
       id: 998,
       post_user_inf: {
+        id: 3,
         user_name: "こーせいいいいいいい",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },
@@ -49,6 +52,7 @@ export default function Page() {
     {
       id: 997,
       post_user_inf: {
+        id: 1,
         user_name: "こーせいいいいいいい",
         profile_image_path: "/placeholder.svg?height=40&width=40"
       },

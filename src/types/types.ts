@@ -29,6 +29,7 @@ export type SignInType = {
 }
 
 export type PostedUserInfType = {
+  id: number;
   user_name: string;
   profile_image_path: string;
 }

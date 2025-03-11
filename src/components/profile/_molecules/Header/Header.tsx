@@ -1,7 +1,7 @@
 import BackButton from "@/components/common/_atoms/BackButton";
 import Logo from "@/components/common/_atoms/Logo";
+import HamburgerMenu from "@/components/modal/_templates/Hamburger";
 import Title from "@/components/post/_atoms/Header/Title";
-import MenuButton from "@/components/profile/_atoms/Header/MenuButton";
 
 export default function Header(props: HeaderProps) {
   return (
@@ -9,7 +9,7 @@ export default function Header(props: HeaderProps) {
       <div className="container flex items-center justify-between h-16 px-4 mx-auto">
         {props.id ? <BackButton /> : <Title />}
         {props.id && <Logo />}
-        {!props.id ? <MenuButton /> : <div className="w-16 h-16"></div>}
+        {!props.id ? <HamburgerMenu /> : <div className="w-16 h-16"></div>}
       </div>
     </header>
   );
