@@ -1,0 +1,61 @@
+const LOCAL_API_URL = 'http://localhost:8000';
+
+// ➀ プロフィールを取得
+export const getUserProfile = async (target_user_id: number, user_id: number, session_id: string) => {
+  try {
+    const res = await fetch(`${LOCAL_API_URL}/api/profile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${session_id}`
+      },
+      body: JSON.stringify({viewer_id: target_user_id, poster_id: user_id}),
+      cache: "no-store"
+    });
+    const data = await res.json();
+    return data.details;
+  } catch(error) {
+    console.error("ユーザープロフィール取得APIのエラー", error);
+    throw new Error("ユーザープロフィール取得失敗");
+  }
+};
+
+// ➁ フォロワーを取得
+export const getFollowers = async (user_id: number, session_id: string) => {
+  try {
+    const res = await fetch(`${LOCAL_API_URL}/api/followed-user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${session_id}`
+      },
+      body: JSON.stringify({user_id}),
+      cache: "no-store"
+    });
+    const data = await res.json();
+    return data.details;
+  } catch(error) {
+    console.error("フォロワー取得APIのエラー", error);
+    throw new Error("フォロワー取得失敗");
+  }
+};
+
+// ➂ フォロー中のユーザーを取得
+export const getFollowings = async (user_id: number, session_id: string) => {
+  try {
+    const res = await fetch(`${LOCAL_API_URL}/api/following-user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${session_id}`
+      },
+      body: JSON.stringify({user_id}),
+      cache: "no-store"
+    });
+    const data = await res.json();
+    return data.details;
+  } catch(error) {
+    console.error("フォロー中ユーザー取得APIのエラー", error);
+    throw new Error("フォロー中ユーザー取得失敗");
+  }
+};

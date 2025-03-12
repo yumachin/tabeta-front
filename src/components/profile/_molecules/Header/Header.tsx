@@ -16,5 +16,5 @@ export default function Header(props: HeaderProps) {
 };
 
 type HeaderProps = {
-  id?: string;
+  id?: number;
 }

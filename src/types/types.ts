@@ -42,7 +42,6 @@ export type GetLPPost = {
   time_section?: string;
   likes: number;
   description: string | null; 
-  tags: string[];
 }
 
 export type FFReration = {
@@ -54,10 +53,9 @@ export type FFReration = {
 }
 
 export type PostingType = {
-  image_path: string;
+  image_path?: string;
   time_section: string;
-  is_public: boolean;
+  is_public: string;
   title: string;
-  tags?: string[];
   description?: string;
 }

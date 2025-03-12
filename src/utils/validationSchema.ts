@@ -14,10 +14,9 @@ export const signInValidation = z.object({
 });
 
 export const postValidation = z.object({
-  image_path: z.string().min(1, "写真は必須です。"),
-  time_section: z.string().min(1, "写真は必須です。"),
-  is_public: z.boolean(),
+  image_path: z.string().optional(),
+  time_section: z.string().min(1, "時間帯は必須です。"),
+  is_public: z.string(),
   title: z.string().min(1, "タイトルは必須です。").max(15, "15文字以下で入力してください。"),
-  tags: z.array(z.string()).optional(),
   description: z.string().optional()
 });

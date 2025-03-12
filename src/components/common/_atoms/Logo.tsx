@@ -2,14 +2,19 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import TabetaLogo from "../../../../public/TabetaLogo.png";
 
 export default function Logo () {
-  const router = useRouter();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isAuth, setIsAuth] = useState<boolean>(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const session_id = localStorage.getItem("session_id");
+    setIsAuth(!!session_id);
+  }, []);
+  
   const handleClick = () => {
     if (isAuth) {
       router.push("/");

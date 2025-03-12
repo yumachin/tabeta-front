@@ -1,3 +1,4 @@
+import { HandlerProps } from "@/app/profile/[id]/page";
 import { User } from "@/types/types";
 
 import Icon from "../../_atoms/Body/Icon";
@@ -13,7 +14,7 @@ export default function Profile(props: ProfileProps) {
         <UserInf user={props.user}/>
       </div>
       {props.id ?
-        <FFButton isFollowing={props.isFollowing} handleFollowed={props.handleFollowed} handleDeleteFollowed={props.handleDeleteFollowed} /> :
+        <FFButton user={props.user} isFollowing={props.isFollowing} handleFollowed={props.handleFollowed} handleDeleteFollowed={props.handleDeleteFollowed} /> :
         <EditButton user={props.user} />
       }
       <div className="mt-6">
@@ -27,8 +28,8 @@ export default function Profile(props: ProfileProps) {
 
 type ProfileProps = {
   user: User;
-  id?: string;
+  id?: number;
   isFollowing?: boolean | null;
-  handleFollowed?: () => void ;
-  handleDeleteFollowed?: () => void ;
+  handleFollowed?: (handlerProps: HandlerProps) => void; 
+  handleDeleteFollowed?: (handlerProps: HandlerProps) => void ;
 }
