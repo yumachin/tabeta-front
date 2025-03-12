@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignInType } from "@/types/types";
+import { signIn } from "@/utils/api/auth/api";
 import { signInValidation } from "@/utils/validationSchema";
 
 export default function Page() {
@@ -23,13 +23,16 @@ export default function Page() {
     mode: 'onChange',
     resolver: zodResolver(signInValidation)
   });
+
   const formSubmit: SubmitHandler<SignInType> = async (formData) => {
     const loadingToast = toast.loading("ログイン中...");
     try {
-      await axios.post("http://localhost:3001/sign-in", {
-        email: formData.email, 
-        password: formData.password
-      });
+      const res = await signIn(formData);
+      const ID = res.details[0].id;
+      const session_id = res.details[0].session_id
+      localStorage.setItem("account_id", ID);
+      localStorage.setItem("session_id", session_id);
+
       toast.success("ログインに成功しました！", { id: loadingToast });
       setTimeout(() => {
         toast.dismiss(loadingToast);

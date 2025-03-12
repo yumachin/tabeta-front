@@ -25,9 +25,10 @@ const MenuItem = ({ icon, label, onClick }: MenuItemProps) => {
 export default function HamburgerMenu() {
   const router = useRouter();
   const handleLogout = () => {
-    // ローカルストレージから、session_idとuser_idを削除
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("session_id");
     router.push("/LP");
-  }
+  };
 
   return (
     <Sheet>

@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,21 +13,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignUpType } from "@/types/types";
+import { signUp } from "@/utils/api/auth/api";
 import { signUpValidation } from "@/utils/validationSchema";
 
 export default function Page() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const { control, handleSubmit, formState: { errors } } = useForm<SignUpType>({ mode: 'onChange', resolver: zodResolver(signUpValidation) });
+  const { control, handleSubmit, formState: { errors } } = useForm<SignUpType>({ 
+    mode: 'onChange', 
+    resolver: zodResolver(signUpValidation) 
+  });
+
   const formSubmit: SubmitHandler<SignUpType> = async (formData) => {
     const loadingToast = toast.loading("アカウント作成中...");
     try {
-      await axios.post("http://localhost:3001/sign-up", {
-        user_name: formData.user_name,
-        account_id: formData.account_id,
-        email: formData.email, 
-        password: formData.password
-      });
+      const res = await signUp(formData);
+      const ID = res.details[0].id;
+      const session_id = res.details[0].session_id;
+      localStorage.setItem("user_id", ID);
+      localStorage.setItem("session_id", session_id);
+
       toast.success("アカウントを作成しました！", { id: loadingToast });
       setTimeout(() => {
         toast.dismiss(loadingToast);
@@ -36,7 +40,7 @@ export default function Page() {
       }, 1000);
     } catch (error) {
       toast.error("アカウントの作成に失敗しました。",  { id: loadingToast });
-      console.error("エラー", error);
+      console.error(error);
     }
   };
 

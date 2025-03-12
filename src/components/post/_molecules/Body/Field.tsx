@@ -26,8 +26,9 @@ export default function Field(props: FieldProps) {
         <Controller
           control={props.control}
           name="time_section"
+          defaultValue="afternoon" 
           render={({ field }) => (
-            <Select {...field}>
+            <Select {...field} onValueChange={field.onChange} >
               <SelectTrigger id="time_section" className="w-full py-5">
                 <SelectValue placeholder="時間帯を選択" />
               </SelectTrigger>
@@ -52,17 +53,17 @@ export default function Field(props: FieldProps) {
         <Controller
           control={props.control}
           name="is_public"
-          defaultValue={true} 
+          defaultValue="1"
           render={({ field }) => (
-            <RadioGroup value={field.value?.toString()} onValueChange={(val) => field.onChange(val === "true")} className="flex space-x-4">
+            <RadioGroup value={field.value?.toString()} onValueChange={(val) => field.onChange(val === "1")} className="flex space-x-4">
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="true" id="is_public" />
+                <RadioGroupItem value="1" id="is_public" />
                 <Label htmlFor="is_public" className="font-normal text-gray-700">
                   公開
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="false" id="is_private" />
+                <RadioGroupItem value="0" id="is_private" />
                 <Label htmlFor="is_private" className="font-normal text-gray-700">
                   非公開
                 </Label>
@@ -76,17 +77,12 @@ export default function Field(props: FieldProps) {
         <Controller
           control={props.control}
           name="title"
-          render={({ field }) => <Input id="title" type="text" className="w-full" {...field} />}
+          defaultValue=""
+          render={({ field }) => (
+            <Input id="title" type="text" className="w-full" {...field} />
+          )}
         />
         {props.errors.title && <p className="text-red-500 text-xs">{props.errors.title.message}</p>}
-      </div>
-      <div className="space-y-3">
-        <Label htmlFor="tags">タグ付け</Label>
-        <Controller
-          control={props.control}
-          name="tags"
-          render={({ field }) => <Input id="tags" type="text" className="w-full" {...field} />}
-        />
       </div>
       <div className="space-y-3">
         <Label htmlFor="description">説明</Label>
