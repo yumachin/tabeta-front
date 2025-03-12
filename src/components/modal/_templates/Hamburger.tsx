@@ -1,19 +1,6 @@
 "use client";
 
-import {
-  Menu,
-  Bookmark,
-  Settings,
-  Moon,
-  Heart,
-  LogOut,
-  Bell,
-  History,
-  UserX,
-  BookOpen,
-  Lock,
-  ShieldMinus
-} from "lucide-react";
+import { Menu, Bookmark, Settings, Moon, Heart, LogOut, Bell, History, UserX, BookOpen, Lock, ShieldMinus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -51,7 +38,11 @@ export default function HamburgerMenu() {
       </SheetTrigger>
       <SheetContent side="right" className="w-80 bg-white text-black p-4 rounded-lg">
         <div className="flex flex-col h-full">
-          <DialogTitle className="text-xl font-semibold text-gray-900 border-b-2 border-zinc-400 pt-2 pb-4 mt-8">設定とアクティビティ</DialogTitle>
+          <DialogTitle
+            className="text-xl font-semibold text-gray-900 border-b-2 border-zinc-400 pt-2 pb-4 mt-8"
+          >
+              設定とアクティビティ
+          </DialogTitle>
 
           <div className="flex-1 overflow-y-auto p-3 space-y-2">
             <MenuItem icon={<Bell className="h-6 w-6" />} label="通知" />

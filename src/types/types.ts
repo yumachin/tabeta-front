@@ -39,6 +39,7 @@ export type GetLPPost = {
   post_user_inf: PostedUserInfType;
   image_path: string;
   created_at: string;
+  time_section?: string;
   likes: number;
   description: string | null; 
   tags: string[];

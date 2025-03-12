@@ -24,25 +24,25 @@ export default function Page() {
 
   const posts: MyPostType[] = [
     {
-      id: 123,
+      id: 10,
       image_path: PullUpLogo.src, 
       created_at: "2025-03-06T12:34:56.789Z", 
       time_section: "昼"
     },
     {
-      id: 89,
+      id: 9,
       image_path: PullUpLogo.src,
       created_at: "2025-03-06T08:34:56.789Z", 
       time_section: "朝"
     },
     {
-      id: 44,
+      id: 8,
       image_path: PullUpLogo.src,
       created_at: "2025-03-05T19:34:56.789Z", 
       time_section: "晩"
     },
     {
-      id: 10,
+      id: 7,
       image_path: PullUpLogo.src,
       created_at: "2025-03-05T12:34:56.789Z", 
       time_section: "昼"

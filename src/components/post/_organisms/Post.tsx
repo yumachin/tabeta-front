@@ -16,7 +16,7 @@ import PostHeader from "../_molecules/Header/PostHeader";
 export default function Post() {
   const router = useRouter();
   const { control, handleSubmit, formState: { errors } } = useForm<PostingType>({
-    mode: 'onChange', 
+    mode: 'onChange',
     resolver: zodResolver(postValidation)
   });
 
