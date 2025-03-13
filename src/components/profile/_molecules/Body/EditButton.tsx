@@ -1,5 +1,6 @@
 import { ProfileEdit } from "@/components/modal/_templates/ProfileEdit";
-import { User } from "@/types/types";
+
+import { TmpUser } from "../../_organisms/Body/Profile";
 
 export default function EditButton(props: EditButtonProps) {
   return (
@@ -10,5 +11,5 @@ export default function EditButton(props: EditButtonProps) {
 };
 
 type EditButtonProps = {
-  user: User;
+  user: TmpUser;
 }

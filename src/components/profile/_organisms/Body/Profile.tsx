@@ -1,5 +1,4 @@
 import { HandlerProps } from "@/app/profile/[id]/page";
-import { User } from "@/types/types";
 
 import Icon from "../../_atoms/Body/Icon";
 import EditButton from "../../_molecules/Body/EditButton";
@@ -26,8 +25,20 @@ export default function Profile(props: ProfileProps) {
   );
 };
 
+export type TmpUser = {
+  user_id: number;
+  profile_image_path: string;
+  user_name: string;
+  account_id: string;
+  description: string;
+  email: string;
+  is_public: string;
+  follower: number;
+  follow: number;
+}
+
 type ProfileProps = {
-  user: User;
+  user: TmpUser;
   id?: number;
   isFollowing?: boolean | null;
   handleFollowed?: (handlerProps: HandlerProps) => void; 

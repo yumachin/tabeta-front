@@ -7,6 +7,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
+import { TmpUser } from "@/components/profile/_organisms/Body/Profile";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -14,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
-import { UpdateProfileType, User } from "@/types/types";
+import { UpdateProfileType } from "@/types/types";
 import { updateProfile } from "@/utils/api/function/api";
 import { updateProfileValidation } from "@/utils/validationSchema";
 
@@ -244,5 +245,5 @@ export function ProfileEdit(props: ProfileEditProps) {
 };
 
 type ProfileEditProps = {
-  user: User;
+  user: TmpUser;
 }

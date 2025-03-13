@@ -2,12 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
-import { User } from "@/types/types";
+import { TmpUser } from "../../_organisms/Body/Profile";
 
 export default function FF(props: FFProps) {
   const router = useRouter();
   const handleNavigation = () => {
-    router.push(`/ff?id=${props.user.id}&name=${props.user.user_name}`);
+    router.push(`/ff?id=${props.user.user_id}&name=${props.user.user_name}`);
   };
   
   return (
@@ -23,5 +23,5 @@ export default function FF(props: FFProps) {
 };
 
 type FFProps = {
-  user: User;
+  user: TmpUser;
 }
