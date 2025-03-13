@@ -12,16 +12,16 @@ export default function Icon(props: IconProps) {
           {imageUrl ? (
             <Image 
               src={imageUrl}
-              width={80}
-              height={80}
+              width={70}
+              height={70}
               alt="UserIcon" 
-              className="rounded-full border-1"
+              className="object-cover w-full h-full rounded-full aspect-square"
             />
           ) : (
             <Image 
               src="placeholder.svg"
-              width={80}
-              height={80}
+              width={70}
+              height={70}
               alt="UserIcon" 
               className="rounded-full border-1"
             />
@@ -35,7 +35,7 @@ export default function Icon(props: IconProps) {
             width={80}
             height={80}
             alt="UserIcon" 
-            className="rounded-full w-full h-auto"
+            className="object-cover w-full h-full rounded-full aspect-square"
           />
           <DialogClose className="sr-only" />
         </DialogContent>

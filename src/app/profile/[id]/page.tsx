@@ -37,7 +37,6 @@ export default function Page(props: PageProps) {
         }
 
         const result = await checkIfFollowing(target_user_id, user_id, session_id);
-        console.log("result[0] は", result[0]);
         if (result[0].follow_status === 1) {
           setIsFollowing(true);
         } else if (result[0].follow_status === 0) {
@@ -153,7 +152,6 @@ export default function Page(props: PageProps) {
   const handleFollowed = async ({ id, user_id, session_id }: HandlerProps) => {
     setRefreshKey(prev => prev + 1);
     try {
-      console.log("とおったよ")
       await followingUser(id, user_id, session_id);
     } catch (error) {
       console.error("フォローに失敗しました", error);
@@ -163,12 +161,7 @@ export default function Page(props: PageProps) {
   const handleDeleteFollowed = async ({ id, user_id, session_id }: HandlerProps) => {
     setRefreshKey(prev => prev + 1);
     try {
-      console.log("とおったよ２")
-      console.log("id", id)
-      console.log("user_id", user_id)
-      const res = await unFollowingUser(id, user_id, session_id);
-
-      console.log("res", res)
+      await unFollowingUser(id, user_id, session_id);
     } catch (error) {
       console.error("フォロー解除に失敗しました", error);
     }

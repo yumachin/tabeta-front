@@ -1,7 +1,8 @@
 import AccountID from "@/components/profile/_atoms/Body/AccountID";
 import FF from "@/components/profile/_atoms/Body/FF";
 import Name from "@/components/profile/_atoms/Body/Name";
-import { User } from "@/types/types";
+
+import { TmpUser } from "../../_organisms/Body/Profile";
 
 export default function UserInf(props: userInfProps) {
   return (
@@ -14,5 +15,5 @@ export default function UserInf(props: userInfProps) {
 };
 
 type userInfProps = {
-  user: User;
+  user: TmpUser;
 }

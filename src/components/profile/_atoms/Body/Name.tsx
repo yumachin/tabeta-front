@@ -1,4 +1,4 @@
-import { User } from "@/types/types";
+import { TmpUser } from "../../_organisms/Body/Profile";
 
 export default function Name(props: NameProps) {
   return (
@@ -10,5 +10,5 @@ export default function Name(props: NameProps) {
 };
 
 type NameProps = {
-  user: User;
+  user: TmpUser;
 }
