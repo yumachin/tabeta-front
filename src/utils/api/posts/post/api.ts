@@ -1,4 +1,5 @@
-const LOCAL_API_URL = 'http://localhost:8000';
+// const LOCAL_API_URL = 'http://localhost:8000';
+const LOCAL_API_URL = 'http://160.251.136.146';
 
 // ➀ 投稿する
 export const postPost = async (postData: FormData, session_id: string | null) => {
