@@ -17,21 +17,20 @@ import { signUp } from "@/utils/api/auth/api";
 import { signUpValidation } from "@/utils/validationSchema";
 
 export default function Page() {
-  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const router = useRouter();
   const { control, handleSubmit, formState: { errors } } = useForm<SignUpType>({ 
     mode: 'onChange', 
     resolver: zodResolver(signUpValidation) 
   });
 
   // 認証状態の場合、元いたページにリダイレクト
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   useEffect(() => {
     const session_id = localStorage.getItem("session_id");
     const user_id = localStorage.getItem("user_id");
     if (session_id || user_id) {
       window.history.back();
-      return;
     } else {
       setIsAuthenticated(false);
     }

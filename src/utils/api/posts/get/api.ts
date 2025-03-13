@@ -21,16 +21,16 @@ export const getAllPosts = async () => {
 };
 
 // ➁ フォローしている人の投稿を取得
-export const getFollowedAllPosts = async (user_id: number, session_id: string | null) => {
-  if (!session_id) {
-    throw new Error("セッションID無効");
-  }
+export const getFollowedAllPosts = async (user_id: number | null, session_id: string | null) => {
   try {
+    if (!session_id || !user_id) {
+      throw new Error("セッションID, 又はユーザーIDが無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/follow-post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({ user_id }),
       cache: "no-store"
@@ -44,13 +44,16 @@ export const getFollowedAllPosts = async (user_id: number, session_id: string | 
 };
 
 // ➂ 個人の投稿を取得
-export const getIndividualPosts = async (target_user_id: number, user_id: number, session_id: string) => {
+export const getIndividualPosts = async (target_user_id: number, user_id: number | null, session_id: string | null) => {
   try {
+    if (!session_id || !user_id) {
+      throw new Error("セッションID, 又はユーザーIDが無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/profile-post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({viewer_id: target_user_id, poster_id: user_id}),
       cache: "no-store"

@@ -63,7 +63,7 @@ export default function Post(props: PostProps) {
               {pathname === "/" ? "最初の投稿をする" : "ログインする"}
             </Link>
           </div>
-         ) : ( props.followedPosts?.map((followedPost: GetLPPost) => (
+         ) : ( props.followedPosts.map((followedPost: GetLPPost) => (
             <div key={followedPost.id} className="py-4 border-b border-gray-200">
               <PostedUserInf post_user_inf={followedPost.post_user_inf} created_at={followedPost.created_at} />
               <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">

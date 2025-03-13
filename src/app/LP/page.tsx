@@ -18,10 +18,12 @@ export default function Page() {
     const fetchLPPosts = async () => {
       try {
         const allPosts = await getAllPosts();
+        
         setPosts(allPosts);
         setLoading(false);
       } catch (error) {
         console.error("投稿の取得に失敗しました:", error);
+        setLoading(false);
       }
     };
     fetchLPPosts();
@@ -33,7 +35,6 @@ export default function Page() {
     const user_id = localStorage.getItem("user_id");
     if (session_id || user_id) {
       window.history.back();
-      return;
     } else {
       setIsAuthenticated(false);
     }

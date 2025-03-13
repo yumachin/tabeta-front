@@ -1,13 +1,19 @@
 "use client";
 
 import { UserPlus, UserCheck } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { HandlerProps } from "@/app/profile/[id]/page";
 import { User } from "@/types/types";
 
 export default function FFButton(props: FFButton) {
-  const user_id: string | null = localStorage.getItem("user_id");
-  const session_id: string | null = localStorage.getItem("session_id");
+  const [user_id, setUser_id] = useState<string | null>(null);
+  const [session_id, setSession_id] = useState<string | null>(null);
+
+  useEffect(() => {
+    setUser_id(localStorage.getItem("user_id"));
+    setSession_id(localStorage.getItem("session_id"));
+  }, []);
 
   return (
     <div className="flex mt-4">
