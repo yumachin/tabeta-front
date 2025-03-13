@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -14,23 +15,28 @@ import Field from "../_molecules/Body/Field";
 import PostHeader from "../_molecules/Header/PostHeader";
 
 export default function Post() {
+  const [userId, setUserId] = useState<number | null>(null);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const router = useRouter();
   const { control, handleSubmit, formState: { errors } } = useForm<PostingType>({
     mode: 'onChange',
     resolver: zodResolver(postValidation)
   });
 
-  const user_id = Number(localStorage.getItem("user_id"));
-  const session_id = localStorage.getItem("session_id");
-
-  if (!user_id || !session_id) {
-    console.error("認証されていません");
-    router.push("/auth/sign-in");
-    return;
-  }
+  useEffect(() => {
+      const user_id = Number(localStorage.getItem("user_id"));
+      const session_id = localStorage.getItem("session_id");
+      if (user_id && session_id) {
+        setUserId(user_id);
+        setSessionId(session_id);
+      } else {
+        console.error("認証されていません");
+        router.push("/auth/sign-in");
+      }
+    }, [router]);
 
   const formSubmit: SubmitHandler<PostingType> = async (formData) => {
-    const addedFormData = {...formData, user_id};
+    const addedFormData = {...formData, userId};
     const image_path = addedFormData.image_path;
     delete addedFormData.image_path;
 
@@ -44,7 +50,7 @@ export default function Post() {
 
     const loadingToast = toast.loading("投稿中...");
     try {
-      await postPost(postData, session_id);
+      await postPost(postData, sessionId);
       toast.success("投稿しました！", { id: loadingToast });
       setTimeout(() => {
         toast.dismiss(loadingToast);

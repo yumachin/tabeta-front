@@ -26,7 +26,7 @@ export default function Page() {
         if (!user_id || !session_id) {
           console.error("認証されていません");
           setLoading(false);
-          router.push("/auth/sign-in");
+          router.push("/LP");
           return;
         }
 
