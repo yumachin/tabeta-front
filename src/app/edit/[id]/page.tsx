@@ -1,7 +1,7 @@
 "use client";
 
 import { Ellipsis } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { use, useEffect, useRef, useState } from 'react';
 
 // import PullUpLogo from "../../../../public/pullup.png";
@@ -14,62 +14,6 @@ import PostHeader from '@/components/post/_molecules/Header/PostHeader';
 import { GetLPPost } from '@/types/types';
 import { getIndividualPosts } from '@/utils/api/posts/get/api';
 
-
-// const posts: GetLPPost[] = [
-//   {
-//     id: 10,
-//     post_user_inf: {
-//       id: 6,
-//       user_name: "ゆうま",
-//       profile_image_path: "/placeholder.svg?height=40&width=40"
-//     },
-//     image_path: PullUpLogo.src,
-//     created_at: "2025-03-05T12:34:56.789Z", 
-//     time_section: "昼",
-//     likes: 111,
-//     description: "すごくいい天気ですね。"
-//   },
-//   {
-//     id: 9,
-//     post_user_inf: {
-//       id: 6,
-//       user_name: "ゆうま",
-//       profile_image_path: "/placeholder.svg?height=40&width=40"
-//     },
-//     image_path: PullUpLogo.src,
-//     created_at: "2025-03-05T12:34:56.789Z", 
-//     time_section: "昼",
-//     likes: 111,
-//     description: "すごくいい天気ですね。"
-//   },
-//   {
-//     id: 8,
-//     post_user_inf: {
-//       id: 6,
-//       user_name: "ゆうま",
-//       profile_image_path: "/placeholder.svg?height=40&width=40"
-//     },
-//     image_path: PullUpLogo.src,
-//     created_at: "2025-03-05T12:34:56.789Z", 
-//     time_section: "昼",
-//     likes: 111,
-//     description: "すごくいい天気ですね。"
-//   },
-//   {
-//     id: 7,
-//     post_user_inf: {
-//       id: 6,
-//       user_name: "ゆうま",
-//       profile_image_path: "/placeholder.svg?height=40&width=40"
-//     },
-//     image_path: PullUpLogo.src,
-//     created_at: "2025-03-05T12:34:56.789Z", 
-//     time_section: "昼",
-//     likes: 111,
-//     description: "すごくいい天気ですね。"
-//   }
-// ];
-
 export default function Page(props: PageProps) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -78,6 +22,8 @@ export default function Page(props: PageProps) {
   const propsParams = use(props.params);
   // パラメーターは文字列より、数値に変換
   const post_id = Number(propsParams.id);
+  const searchParams = useSearchParams();
+  const user_name = searchParams.get('user_name');
   const postRefs = useRef<RefType>({});
 
   useEffect(() => {
@@ -118,6 +64,63 @@ export default function Page(props: PageProps) {
     postRefs.current[postId] = element; 
   };
 
+  console.log("postsは", posts)
+
+  // const posts: GetLPPost[] = [
+  //   {
+  //     id: 10,
+  //     post_user_inf: {
+  //       id: 6,
+  //       user_name: "ゆうま",
+  //       profile_image_path: "/placeholder.svg?height=40&width=40"
+  //     },
+  //     image_path: PullUpLogo.src,
+  //     created_at: "2025-03-05T12:34:56.789Z", 
+  //     time_section: "昼",
+  //     likes: 111,
+  //     description: "すごくいい天気ですね。"
+  //   },
+  //   {
+  //     id: 9,
+  //     post_user_inf: {
+  //       id: 6,
+  //       user_name: "ゆうま",
+  //       profile_image_path: "/placeholder.svg?height=40&width=40"
+  //     },
+  //     image_path: PullUpLogo.src,
+  //     created_at: "2025-03-05T12:34:56.789Z", 
+  //     time_section: "昼",
+  //     likes: 111,
+  //     description: "すごくいい天気ですね。"
+  //   },
+  //   {
+  //     id: 8,
+  //     post_user_inf: {
+  //       id: 6,
+  //       user_name: "ゆうま",
+  //       profile_image_path: "/placeholder.svg?height=40&width=40"
+  //     },
+  //     image_path: PullUpLogo.src,
+  //     created_at: "2025-03-05T12:34:56.789Z", 
+  //     time_section: "昼",
+  //     likes: 111,
+  //     description: "すごくいい天気ですね。"
+  //   },
+  //   {
+  //     id: 7,
+  //     post_user_inf: {
+  //       id: 6,
+  //       user_name: "ゆうま",
+  //       profile_image_path: "/placeholder.svg?height=40&width=40"
+  //     },
+  //     image_path: PullUpLogo.src,
+  //     created_at: "2025-03-05T12:34:56.789Z", 
+  //     time_section: "昼",
+  //     likes: 111,
+  //     description: "すごくいい天気ですね。"
+  //   }
+  // ];
+
   return (
     <div className='flex-1 pb-16'>
       <div className="container px-4 mx-auto">
@@ -148,7 +151,7 @@ export default function Page(props: PageProps) {
                 <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
                   <PostImage image_path={post.image_path} />
                 </div>
-                <PostFooter post={post} />
+                <PostFooter post={post} user_name={user_name} />
               </div>
             ))
           )

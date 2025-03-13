@@ -47,7 +47,7 @@ export default function Post(props: PostProps) {
             <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
               <PostImage image_path={post.image_path} />
             </div>
-            <PostFooter post={post} />
+            <PostFooter post={post} user_name={post.post_user_inf.user_name} />
           </div>))
         )}
       </div>
@@ -69,7 +69,7 @@ export default function Post(props: PostProps) {
               <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
                 <PostImage image_path={followedPost.image_path} />
               </div>
-              <PostFooter post={followedPost} />
+              <PostFooter post={followedPost} user_name={followedPost.post_user_inf.user_name} />
             </div>))
           )}
         </div>

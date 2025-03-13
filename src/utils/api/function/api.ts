@@ -13,7 +13,7 @@ export const checkIfFollowing = async (id: number, user_id: number | null, sessi
         "Content-Type": "application/json",
         "Authorization": session_id
       },
-      body: JSON.stringify({viewer_id: id, poter_id: user_id}),
+      body: JSON.stringify({viewer_id: user_id, poster_id: id}),
       cache: "no-store"
     });
     const data = await res.json();
@@ -63,7 +63,7 @@ export const unFollowingUser = async (id: number, user_id: string | null, sessio
       cache: "no-store"
     });
     const data = await res.json();
-    return data.message;
+    return data.details;
   } catch(error) {
     console.error("フォロー解除APIのエラー", error);
     throw new Error("フォロー解除失敗");

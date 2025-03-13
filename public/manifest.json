@@ -1,0 +1,16 @@
+{
+  "name": "Tabeta!",
+  "short_name": "Tabeta!",
+  "icons": [
+    {
+      "src": "/TabetaLogo2.png",
+      "sizes": "371x371",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#FFFFFF",
+  "background_color": "#e5e7eb",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}

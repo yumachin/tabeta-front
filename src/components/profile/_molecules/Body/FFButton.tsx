@@ -15,12 +15,16 @@ export default function FFButton(props: FFButton) {
     setSession_id(localStorage.getItem("session_id"));
   }, []);
 
+  console.log("user_idは", user_id)
+  console.log("session_idは", session_id)
+  console.log(props);
+
   return (
     <div className="flex mt-4">
       {props.isFollowing ? (
         <button 
           className="flex flex-1 justify-center gap-2 px-4 py-2 font-medium text-center border text-orange-500 bg-white rounded-md hover:border-red-400"
-          onClick={() => props.handleFollowed?.({id: props.user.id, user_id, session_id })}
+          onClick={() => props.handleDeleteFollowed?.({id: props.user.id, user_id, session_id })}
         >
           <UserCheck />
           <p>フォロー中</p>
@@ -28,7 +32,7 @@ export default function FFButton(props: FFButton) {
       ) : (
         <button 
           className="flex flex-1 justify-center gap-2 px-4 py-2 font-medium text-center text-white bg-orange-500 rounded-md hover:bg-orange-600"
-          onClick={() => props.handleDeleteFollowed?.({id: props.user.id, user_id, session_id })}
+          onClick={() => props.handleFollowed?.({id: props.user.id, user_id, session_id })}
         >
           <UserPlus />
           <p>フォローする</p>

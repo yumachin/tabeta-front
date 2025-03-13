@@ -20,10 +20,10 @@ export default function MyPosts(props: MyPostsProps) {
       <div className="grid grid-cols-2 gap-1">
         {
           props.posts.map((post: MyPostType, index: number) => (
-          <Link href={`/edit/${post.id}`} key={index}>
+          <Link href={`/edit/${post.id}?user_name=${props.user_name}`} key={index}>
             <MyPost post={post} />  
-          </Link>
-        ))}
+          </Link>))
+        }
       </div>
       )}
     </div>
@@ -31,5 +31,6 @@ export default function MyPosts(props: MyPostsProps) {
 };
 
 type MyPostsProps = {
+  user_name: string;
   posts: MyPostType[];
 }
