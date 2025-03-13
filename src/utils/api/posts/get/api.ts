@@ -1,4 +1,5 @@
-const LOCAL_API_URL = 'http://localhost:8000';
+// const LOCAL_API_URL = 'http://localhost:8000';
+const LOCAL_API_URL = 'http://160.251.136.146';
 
 // ➀ すべての投稿を取得
 export const getAllPosts = async () => {
@@ -20,7 +21,10 @@ export const getAllPosts = async () => {
 };
 
 // ➁ フォローしている人の投稿を取得
-export const getFollowedAllPosts = async (user_id: number, session_id: string) => {
+export const getFollowedAllPosts = async (user_id: number, session_id: string | null) => {
+  if (!session_id) {
+    throw new Error("セッションID無効");
+  }
   try {
     const res = await fetch(`${LOCAL_API_URL}/api/follow-post`, {
       method: "POST",

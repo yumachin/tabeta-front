@@ -8,14 +8,14 @@ export default function ToggleBar(props: ToggleBarProps) {
   const handleReccomendClick = () => {
     if (props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState) {
       props.setButtonState(0);
-      props.onPrev()
+      props.onPrev();
     }
   };
 
   const handleFollowClick = () => {
     if (props.onNext && props.onPrev && props.buttonState !== undefined && props.setButtonState) {
       props.setButtonState(1);
-      props.onNext()
+      props.onNext();
     }
   };
 

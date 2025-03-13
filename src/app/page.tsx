@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import Slider from "react-slick";
 
 import HeaderAndFooter from "@/components/Home/_templates/HeaderAndFooter";
@@ -25,9 +26,13 @@ export default function Page() {
 
         if (!user_id || !session_id) {
           console.error("認証されていません");
-          setLoading(false);
-          router.push("/LP");
-          return;
+          const errorToast = toast.error("認証状態を確認できません");
+          setTimeout(() => {
+            setLoading(false);
+            toast.dismiss(errorToast);
+            router.push("/LP");
+            return;
+          }, 1000);
         }
 
         const allPosts = await getAllPosts();
