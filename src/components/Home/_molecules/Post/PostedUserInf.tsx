@@ -10,11 +10,13 @@ export default function PostedUserInf(props: PostedUserInfProps) {
   const redirectUrl = props.pathname === "/LP" ? 
   "/auth/sign-in" : `/profile/${props.postUserInf.id}`;
 
+  console.log("props", props);
+
   return (
     <div className="flex items-center mb-3">
       <Link href={redirectUrl}>
         <Image
-          src={props.postUserInf.profile_image_path}
+          src="placeholder.svg?height=40&width=40"
           width={40}
           height={40}
           alt=""

@@ -37,7 +37,7 @@ export type PostedUserInfType = {
 
 export type GetLPPost = {
   id: number;
-  post_user_inf: PostedUserInfType;
+  postUserInf: PostedUserInfType;
   image_path: string;
   created_at: string;
   time_section?: string;
