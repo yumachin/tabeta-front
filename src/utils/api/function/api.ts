@@ -2,13 +2,16 @@
 const LOCAL_API_URL = 'http://160.251.136.146';
 
 // ➀ フォロー中かどうか判定
-export const checkIfFollowing = async (id: number, user_id: number, session_id: string) => {
+export const checkIfFollowing = async (id: number, user_id: number | null, session_id: string | null) => {
   try {
+    if (!session_id || !user_id) {
+      throw new Error("セッションID, 又はユーザーIDが無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/profile`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({viewer_id: id, poter_id: user_id}),
       cache: "no-store"
@@ -25,13 +28,13 @@ export const checkIfFollowing = async (id: number, user_id: number, session_id: 
 export const followingUser = async (id: number, user_id: string | null, session_id: string | null) => {
   try {
     if (!user_id || !session_id) {
-      throw new Error("セッションID無効");
+      throw new Error("セッションID, 又はユーザーIDが無効");
     }
     const res = await fetch(`${LOCAL_API_URL}/api/follow`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({follower_user_id: id, user_id: Number(user_id)}),
       cache: "no-store"
@@ -48,13 +51,13 @@ export const followingUser = async (id: number, user_id: string | null, session_
 export const unFollowingUser = async (id: number, user_id: string | null, session_id: string | null) => {
   try {
     if (!user_id || !session_id) {
-      throw new Error("セッションID無効");
+      throw new Error("セッションID, 又はユーザーIDが無効");
     }
     const res = await fetch(`${LOCAL_API_URL}/api/unfollow`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({follower_user_id: id, user_id: Number(user_id)}),
       cache: "no-store"
@@ -69,15 +72,15 @@ export const unFollowingUser = async (id: number, user_id: string | null, sessio
 
 // ➃ プロフィールを更新
 export const updateProfile = async (postData: FormData, session_id: string | null) => {
-  if (!session_id) {
-    throw new Error("セッションID無効");
-  }
   try {
+    if (!session_id) {
+      throw new Error("セッションID無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/update-profile`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: postData
     });

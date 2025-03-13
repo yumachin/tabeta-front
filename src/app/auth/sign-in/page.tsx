@@ -17,27 +17,26 @@ import { signIn } from "@/utils/api/auth/api";
 import { signInValidation } from "@/utils/validationSchema";
 
 export default function Page() {
-  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const router = useRouter();
   const { control, handleSubmit, formState: { errors } } = useForm<SignInType>({
     mode: 'onChange',
     resolver: zodResolver(signInValidation)
   });
 
   // 認証状態の場合、元いたページにリダイレクト
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   useEffect(() => {
     const session_id = localStorage.getItem("session_id");
     const user_id = localStorage.getItem("user_id");
     if (session_id || user_id) {
       window.history.back();
-      return;
     } else {
       setIsAuthenticated(false);
     }
   }, []);
   if (isAuthenticated === null) {
-    return null;
+    return null;  
   }
 
   const formSubmit: SubmitHandler<SignInType> = async (formData) => {
@@ -46,7 +45,7 @@ export default function Page() {
       const res = await signIn(formData);
       const ID = res.details[0].id;
       const session_id = res.details[0].session_id
-      localStorage.setItem("account_id", ID);
+      localStorage.setItem("user_id", ID);
       localStorage.setItem("session_id", session_id);
 
       toast.success("ログインに成功しました！", { id: loadingToast });

@@ -2,13 +2,16 @@
 const LOCAL_API_URL = 'http://160.251.136.146';
 
 // ➀ プロフィールを取得
-export const getUserProfile = async (target_user_id: number, user_id: number, session_id: string) => {
+export const getUserProfile = async (target_user_id: number, user_id: number | null, session_id: string | null) => {
   try {
+    if (!user_id || !session_id) {
+      throw new Error("セッションID, 又はユーザーIDが無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/profile`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({viewer_id: target_user_id, poster_id: user_id}),
       cache: "no-store"
@@ -22,13 +25,16 @@ export const getUserProfile = async (target_user_id: number, user_id: number, se
 };
 
 // ➁ フォロワーを取得
-export const getFollowers = async (user_id: number, session_id: string) => {
+export const getFollowers = async (user_id: number | null, session_id: string | null) => {
   try {
+    if (!user_id || !session_id) {
+      throw new Error("セッションID, 又はユーザーIDが無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/followed-user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({user_id}),
       cache: "no-store"
@@ -42,13 +48,16 @@ export const getFollowers = async (user_id: number, session_id: string) => {
 };
 
 // ➂ フォロー中のユーザーを取得
-export const getFollowings = async (user_id: number, session_id: string) => {
+export const getFollowings = async (user_id: number | null, session_id: string | null) => {
   try {
+    if (!user_id || !session_id) {
+      throw new Error("セッションID, 又はユーザーIDが無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/following-user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${session_id}`
+        "Authorization": session_id
       },
       body: JSON.stringify({user_id}),
       cache: "no-store"

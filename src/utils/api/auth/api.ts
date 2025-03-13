@@ -38,7 +38,7 @@ export const signIn = async (formData: SignInType) => {
 // ➂ サインアウト
 export const signOut = async () => {
   try {
-    const res = await axios.delete(`${LOCAL_API_URL}/api/sign-out`);
+    const res = await axios.post(`${LOCAL_API_URL}/api/sign-out`);
     return res.data;
   } catch (error) {
     console.error("サインアウトAPIのエラー", error);

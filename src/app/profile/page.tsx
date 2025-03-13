@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import Footer from "@/components/Home/_organisms/Footer/Footer";
 import Header from "@/components/profile/_molecules/Header/Header";
@@ -29,9 +30,12 @@ export default function Page() {
 
         if (!user_id || !session_id) {
           console.error("認証されていません");
-          setLoading(false);
-          router.push("/auth/sign-in");
-          return;
+          const errorToast = toast.error("認証状態を確認できません");
+          setTimeout(() => {
+            setLoading(false);
+            toast.dismiss(errorToast);
+            router.push("/auth/sign-in");
+          }, 2000);
         }
 
         const userData = await getUserProfile(user_id, user_id, session_id);
@@ -89,24 +93,27 @@ export default function Page() {
   // ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      <Header />
-      {loading ? (
-        <div className="flex flex-col items-center justify-center h-[70vh] space-y-12">
-        <h2 className="text-2xl text-orange-500 font-bold animate-bounce">おいしい情報を料理中...　🍴</h2>
-        <div className="flex justify-center space-x-2">
-          <div className="w-3 h-3 rounded-full bg-orange-200 animate-bounce delay-0"></div>
-          <div className="w-3 h-3 rounded-full bg-orange-400 animate-bounce delay-150"></div>
-          <div className="w-3 h-3 rounded-full bg-orange-600 animate-bounce delay-300"></div>
-        </div>
+    <>
+      <Toaster />
+      <div className="flex flex-col min-h-screen bg-white">
+        <Header />
+        {loading ? (
+          <div className="flex flex-col items-center justify-center h-[70vh] space-y-12">
+            <h2 className="text-2xl text-orange-500 font-bold animate-bounce">おいしい情報を料理中...　🍴</h2>
+            <div className="flex justify-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-orange-200 animate-bounce delay-0"></div>
+              <div className="w-3 h-3 rounded-full bg-orange-400 animate-bounce delay-150"></div>
+              <div className="w-3 h-3 rounded-full bg-orange-600 animate-bounce delay-300"></div>
+            </div>
+          </div>
+        ) : (
+          <>
+            {user && <Profile user={user[0]} />}
+            {posts && <Posts posts={posts} />}
+          </>
+        )}
+        <Footer />
       </div>
-      ) : (
-        <>
-          {user && <Profile user={user} />}
-          {posts && <Posts posts={posts} />}
-        </>
-      )}
-      <Footer />
-    </div>
+    </>
   );
 };

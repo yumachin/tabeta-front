@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Slider from "react-slick";
 
 import HeaderAndFooter from "@/components/Home/_templates/HeaderAndFooter";
@@ -18,6 +18,7 @@ export default function Page() {
   const sliderRef = useRef<Slider | null>(null);
   const [buttonState, setButtonState] = useState<number>(0);
 
+
   useEffect(() => {
     const fetchHomePosts = async () => {
       try {
@@ -31,8 +32,7 @@ export default function Page() {
             setLoading(false);
             toast.dismiss(errorToast);
             router.push("/LP");
-            return;
-          }, 1000);
+          }, 2000);
         }
 
         const allPosts = await getAllPosts();
@@ -43,11 +43,13 @@ export default function Page() {
         setLoading(false);
       } catch (error) {
         console.error("投稿の取得に失敗しました:", error);
+        setLoading(false);
       }
     };
     fetchHomePosts();
   }, [router]);
 
+  console.log("フォロー中ユーザーの投稿は", followedPosts)
   // const posts: GetLPPost[] = [
   //   {
   //     id: 1000,
@@ -138,18 +140,21 @@ export default function Page() {
   // ];
 
   return (
-    <HeaderAndFooter onNext={() => sliderRef.current?.slickNext()} onPrev={() => sliderRef.current?.slickPrev()} buttonState={buttonState} setButtonState={setButtonState} >
-      {loading ? (
-        <div className="flex flex-col items-center justify-center h-[70vh] space-y-12">
-          <h2 className="text-2xl text-orange-500 font-bold animate-bounce">おいしい投稿を料理中...　🍴</h2>
-          <div className="flex justify-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-orange-200 animate-bounce delay-0"></div>
-            <div className="w-3 h-3 rounded-full bg-orange-400 animate-bounce delay-150"></div>
-            <div className="w-3 h-3 rounded-full bg-orange-600 animate-bounce delay-300"></div>
+    <>
+      <Toaster />
+      <HeaderAndFooter onNext={() => sliderRef.current?.slickNext()} onPrev={() => sliderRef.current?.slickPrev()} buttonState={buttonState} setButtonState={setButtonState} >
+        {loading ? (
+          <div className="flex flex-col items-center justify-center h-[70vh] space-y-12">
+            <h2 className="text-2xl text-orange-500 font-bold animate-bounce">おいしい投稿を料理中...　🍴</h2>
+            <div className="flex justify-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-orange-200 animate-bounce delay-0"></div>
+              <div className="w-3 h-3 rounded-full bg-orange-400 animate-bounce delay-150"></div>
+              <div className="w-3 h-3 rounded-full bg-orange-600 animate-bounce delay-300"></div>
+            </div>
           </div>
-        </div>
-       ) : <Post posts={posts} followedPosts={followedPosts} ref={sliderRef} setButtonState={setButtonState} />
-      }
-    </HeaderAndFooter>
+        ) : <Post posts={posts} followedPosts={followedPosts} ref={sliderRef} setButtonState={setButtonState} />
+        }
+      </HeaderAndFooter>
+    </>
   );
 };

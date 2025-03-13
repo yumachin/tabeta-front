@@ -7,13 +7,23 @@ export default function Icon(props: IconProps) {
     <div className="flex-shrink-0 mr-6">
       <Dialog>
         <DialogTrigger>
-          <Image 
-            src={props.image_path}
-            width={80}
-            height={80}
-            alt="UserIcon" 
-            className="rounded-full border-1"
-          />
+          {props.image_path ? (
+            <Image 
+              src={props.image_path}
+              width={80}
+              height={80}
+              alt="UserIcon" 
+              className="rounded-full border-1"
+            />
+          ) : (
+            <Image 
+              src="placeholder.svg"
+              width={80}
+              height={80}
+              alt="UserIcon" 
+              className="rounded-full border-1"
+            />
+          )}
         </DialogTrigger>
         <DialogContent className="rounded-full">
           {/* sr-only: 視覚的に消す */}

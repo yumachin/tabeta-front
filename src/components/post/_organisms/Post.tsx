@@ -33,20 +33,47 @@ export default function Post() {
         console.error("認証されていません");
         router.push("/auth/sign-in");
       }
-    }, [router]);
+  }, [router]);
+
+  const base64ToFile = (base64: string, fileName: string): File => {
+    const arr = base64.split(",");
+    const mime = arr[0].match(/:(.*?);/)?.[1] || "image/png";
+    const bstr = atob(arr[1]); // Base64をバイナリにデコード
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+  
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+  
+    return new File([u8arr], fileName, { type: mime });
+  };
 
   const formSubmit: SubmitHandler<PostingType> = async (formData) => {
     const addedFormData = {...formData, userId};
     const image_path = addedFormData.image_path;
     delete addedFormData.image_path;
+    const decodedFile = image_path ? base64ToFile(image_path, "decoded-image.png") : null;
 
+    console.log("写真削除直後のaddedFormDataは", addedFormData);
+    console.log("JSON.stringify(addedFormData)は", JSON.stringify(addedFormData))
     const postData = new FormData();
     postData.append("json_data", JSON.stringify(addedFormData));
+    console.log("json_dataをappendした直後のpostData", postData);
+    console.log("json_dataをappendした直後のpostData.get(json_data)", postData.get("json_data"));
     if (image_path) {
-      postData.append("photo", image_path);
+      console.log("photoがありました。")
+      if (decodedFile) {
+        postData.append("photo", decodedFile);
+      } else {
+        postData.append("photo", "");
+      }
     } else {
+      console.log("photoがありません。");
       postData.append("photo", "");
     }
+    console.log("photoをappendした直後のpostData", postData)
+    console.log("photoをappendした直後のpostData.get(photo)", postData.get("photo"))
 
     const loadingToast = toast.loading("投稿中...");
     try {

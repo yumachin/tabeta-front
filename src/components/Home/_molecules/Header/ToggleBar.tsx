@@ -25,7 +25,7 @@ export default function ToggleBar(props: ToggleBarProps) {
         className={`flex-1 py-3 font-medium text-center ${props.buttonState === 0 ? "text-orange-500" : "text-gray-500"}`}
         onClick={handleReccomendClick}
       >
-        {pathname === "/" ? "おすすめ" : "フォロワー"}
+        {pathname === "/" ? "最新" : "フォロワー"}
       </button>
       <button 
         className={`flex-1 py-3 font-medium text-center ${props.buttonState === 1 ? "text-orange-500" : "text-gray-500"}`}
