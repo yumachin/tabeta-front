@@ -15,8 +15,8 @@ import Field from "../_molecules/Body/Field";
 import PostHeader from "../_molecules/Header/PostHeader";
 
 export default function Post() {
-  const [userId, setUserId] = useState<number | null>(null);
-  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [user_id, setUser_id] = useState<number | null>(null);
+  const [session_id, setSession_id] = useState<string | null>(null);
   const router = useRouter();
   const { control, handleSubmit, formState: { errors } } = useForm<PostingType>({
     mode: 'onChange',
@@ -24,15 +24,15 @@ export default function Post() {
   });
 
   useEffect(() => {
-      const user_id = Number(localStorage.getItem("user_id"));
-      const session_id = localStorage.getItem("session_id");
-      if (user_id && session_id) {
-        setUserId(user_id);
-        setSessionId(session_id);
-      } else {
-        console.error("認証されていません");
-        router.push("/auth/sign-in");
-      }
+    const userId = Number(localStorage.getItem("user_id"));
+    const sessionId = localStorage.getItem("session_id");
+    if (userId && sessionId) {
+      setUser_id(userId);
+      setSession_id(sessionId);
+    } else {
+      console.error("認証されていません");
+      router.push("/auth/sign-in");
+    }
   }, [router]);
 
   const base64ToFile = (base64: string, fileName: string): File => {
@@ -50,7 +50,7 @@ export default function Post() {
   };
 
   const formSubmit: SubmitHandler<PostingType> = async (formData) => {
-    const addedFormData = {...formData, userId};
+    const addedFormData = {...formData, user_id};
     const image_path = addedFormData.image_path;
     delete addedFormData.image_path;
     const decodedFile = image_path ? base64ToFile(image_path, "decoded-image.png") : null;
@@ -77,7 +77,7 @@ export default function Post() {
 
     const loadingToast = toast.loading("投稿中...");
     try {
-      await postPost(postData, sessionId);
+      await postPost(postData, session_id);
       toast.success("投稿しました！", { id: loadingToast });
       setTimeout(() => {
         toast.dismiss(loadingToast);

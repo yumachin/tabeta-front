@@ -55,7 +55,7 @@ export const getIndividualPosts = async (target_user_id: number, user_id: number
         "Content-Type": "application/json",
         "Authorization": session_id
       },
-      body: JSON.stringify({viewer_id: target_user_id, poster_id: user_id}),
+      body: JSON.stringify({viewer_id: user_id, poster_id: target_user_id}),
       cache: "no-store"
     });
     const data = await res.json();

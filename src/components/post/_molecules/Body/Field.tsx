@@ -33,13 +33,13 @@ export default function Field(props: FieldProps) {
                 <SelectValue placeholder="時間帯を選択" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem className="w-full py-4" value="morning">
+                <SelectItem className="w-full py-4" value="breakfast">
                   朝
                 </SelectItem>
-                <SelectItem className="w-full py-4" value="afternoon">
+                <SelectItem className="w-full py-4" value="lunch">
                   昼
                 </SelectItem>
-                <SelectItem className="w-full py-4" value="night">
+                <SelectItem className="w-full py-4" value="dinner">
                   晩
                 </SelectItem>
               </SelectContent>

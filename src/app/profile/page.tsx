@@ -51,6 +51,9 @@ export default function Page() {
     fetchProfileData();
   }, [router]);
 
+  console.log("ログインしているユーザーは", user);
+  console.log("ログインしているユーザーの投稿は", posts);
+
   // const user: User =
   //   {
   //     id: 6,
@@ -109,7 +112,7 @@ export default function Page() {
         ) : (
           <>
             {user && <Profile user={user[0]} />}
-            {posts && <Posts posts={posts} />}
+            {user && posts && <Posts user={user[0]} posts={posts} />}
           </>
         )}
         <Footer />

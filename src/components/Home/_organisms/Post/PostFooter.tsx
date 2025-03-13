@@ -8,11 +8,12 @@ export default function PostFooter(props: PostFooterProps) {
     <div className="mx-2">
       <Buttons />
       <LikesCount likes={props.post.likes} />
-      <UserCommentInf post={props.post} />
+      <UserCommentInf post={props.post} user_name={props.user_name ?? null} />
     </div>
   );
 };
 
 type PostFooterProps = {
   post: GetLPPost;
+  user_name?: string | null;
 }

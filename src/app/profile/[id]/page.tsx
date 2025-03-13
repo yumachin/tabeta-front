@@ -37,9 +37,10 @@ export default function Page(props: PageProps) {
         }
 
         const result = await checkIfFollowing(target_user_id, user_id, session_id);
-        if (result.follow_status === 1) {
+        console.log("result[0] は", result[0]);
+        if (result[0].follow_status === 1) {
           setIsFollowing(true);
-        } else if (result.follow_status === 0) {
+        } else if (result[0].follow_status === 0) {
           setIsFollowing(false);
         } else {
           setIsFollowing(null);
@@ -66,6 +67,7 @@ export default function Page(props: PageProps) {
         }
 
         const userData = await getUserProfile(target_user_id, user_id, session_id);
+        console.log("aaa", userData)
         setUser(userData);
         setLoading(false);
       } catch (error) {
@@ -92,11 +94,12 @@ export default function Page(props: PageProps) {
         setPosts(postsData);
         setLoading(false);
       } catch (error) {
-        console.error("他のユーザーのプロフィールの取得に失敗しました", error);
+        console.error("他のユーザーのポストの取得に失敗しました", error);
       }
     };
     fetchOthersPostsData();
   }, [router, target_user_id, refreshKey]);
+  console.log("userは", user)
 
   // const me: User =
   //   {
@@ -150,6 +153,7 @@ export default function Page(props: PageProps) {
   const handleFollowed = async ({ id, user_id, session_id }: HandlerProps) => {
     setRefreshKey(prev => prev + 1);
     try {
+      console.log("とおったよ")
       await followingUser(id, user_id, session_id);
     } catch (error) {
       console.error("フォローに失敗しました", error);
@@ -159,7 +163,12 @@ export default function Page(props: PageProps) {
   const handleDeleteFollowed = async ({ id, user_id, session_id }: HandlerProps) => {
     setRefreshKey(prev => prev + 1);
     try {
-      await unFollowingUser(id, user_id, session_id);
+      console.log("とおったよ２")
+      console.log("id", id)
+      console.log("user_id", user_id)
+      const res = await unFollowingUser(id, user_id, session_id);
+
+      console.log("res", res)
     } catch (error) {
       console.error("フォロー解除に失敗しました", error);
     }
@@ -179,8 +188,8 @@ export default function Page(props: PageProps) {
         </div>
         ) : (
           <>
-            {user && <Profile user={user} id={target_user_id} isFollowing={isFollowing} handleFollowed={handleFollowed} handleDeleteFollowed={handleDeleteFollowed} />}
-            {posts && <Posts posts={posts} />}
+            {user && <Profile user={user[0]} id={target_user_id} isFollowing={isFollowing} handleFollowed={handleFollowed} handleDeleteFollowed={handleDeleteFollowed} />}
+            {user && posts && <Posts user={user[0]} posts={posts} />}
           </>
         )
       }

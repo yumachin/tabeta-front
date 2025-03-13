@@ -11,10 +11,10 @@ export const postPost = async (postData: FormData, session_id: string | null) =>
   try {
     const res = await fetch(`${LOCAL_API_URL}/api/post`, {
       method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": session_id
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Authorization": session_id
+      // },
       body: postData
     });
     const data = await res.json();

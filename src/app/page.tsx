@@ -18,7 +18,6 @@ export default function Page() {
   const sliderRef = useRef<Slider | null>(null);
   const [buttonState, setButtonState] = useState<number>(0);
 
-
   useEffect(() => {
     const fetchHomePosts = async () => {
       try {
@@ -49,7 +48,9 @@ export default function Page() {
     fetchHomePosts();
   }, [router]);
 
-  console.log("フォロー中ユーザーの投稿は", followedPosts)
+  console.log("すべての投稿は", posts);
+  console.log("フォロー中ユーザーの投稿は", followedPosts);
+
   // const posts: GetLPPost[] = [
   //   {
   //     id: 1000,

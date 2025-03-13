@@ -3,13 +3,15 @@ import Image from "next/image";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export default function Icon(props: IconProps) {
+  const imageUrl = `http://160.251.136.146/storage/${props.image_path}`;
+
   return (
     <div className="flex-shrink-0 mr-6">
       <Dialog>
         <DialogTrigger>
-          {props.image_path ? (
+          {imageUrl ? (
             <Image 
-              src={props.image_path}
+              src={imageUrl}
               width={80}
               height={80}
               alt="UserIcon" 
@@ -29,7 +31,7 @@ export default function Icon(props: IconProps) {
           {/* sr-only: 視覚的に消す */}
           <DialogTitle className="sr-only">User Icon</DialogTitle>
           <Image 
-            src={props.image_path}
+            src={imageUrl}
             width={80}
             height={80}
             alt="UserIcon" 
