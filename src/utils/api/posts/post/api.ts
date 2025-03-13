@@ -1,7 +1,10 @@
 const LOCAL_API_URL = 'http://localhost:8000';
 
 // ➀ 投稿する
-export const postPost = async (postData: FormData, session_id: string) => {
+export const postPost = async (postData: FormData, session_id: string | null) => {
+  if (!session_id) {
+    throw new Error("セッションID無効");
+  }
   try {
     const res = await fetch(`${LOCAL_API_URL}/api/post`, {
       method: 'POST',

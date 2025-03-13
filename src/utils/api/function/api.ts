@@ -20,7 +20,7 @@ export const checkIfFollowing = async (id: number, user_id: number, session_id: 
   }
 };
 
-// ➁フォローする
+// ➁ フォローする
 export const followingUser = async (id: number, user_id: string | null, session_id: string | null) => {
   try {
     if (!user_id || !session_id) {
@@ -43,7 +43,7 @@ export const followingUser = async (id: number, user_id: string | null, session_
   }
 };
 
-// ➁フォロー解除する
+// ➂ フォロー解除する
 export const unFollowingUser = async (id: number, user_id: string | null, session_id: string | null) => {
   try {
     if (!user_id || !session_id) {
@@ -63,5 +63,27 @@ export const unFollowingUser = async (id: number, user_id: string | null, sessio
   } catch(error) {
     console.error("フォロー解除APIのエラー", error);
     throw new Error("フォロー解除失敗");
+  }
+};
+
+// ➃ プロフィールを更新
+export const updateProfile = async (postData: FormData, session_id: string | null) => {
+  if (!session_id) {
+    throw new Error("セッションID無効");
+  }
+  try {
+    const res = await fetch(`${LOCAL_API_URL}/api/update-profile`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${session_id}`
+      },
+      body: postData
+    });
+    const data = await res.json();
+    return data;
+  } catch(error) {
+    console.error("プロフィール更新APIのエラー", error);
+    throw new Error("プロフィール更新失敗");
   }
 };

@@ -1,14 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 import Footer from "@/components/Home/_organisms/Footer/Footer";
 import Header from "@/components/profile/_molecules/Header/Header";
 import Posts from "@/components/profile/_organisms/Body/Posts";
 import Profile from "@/components/profile/_organisms/Body/Profile";
+// import { MyPostType, User } from "@/types/types";
 import { getIndividualPosts } from "@/utils/api/posts/get/api";
-// import { User } from "@/types/types";
 import { getUserProfile } from "@/utils/api/users/api";
 
 // import DefaultUserIcon from "../../../public/DefaultUserIcon.png";
@@ -54,7 +55,8 @@ export default function Page() {
   //     user_name: "Kiyoya", 
   //     account_id: "kiyoya123",
   //     description: "",
-  //     is_public: true, 
+  //     email: "kiyoya@gmail.com",
+  //     is_public: "1", 
   //     follower: 98,
   //     follow: 142
   //   };

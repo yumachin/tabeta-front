@@ -55,7 +55,7 @@ export default function Field(props: FieldProps) {
           name="is_public"
           defaultValue="1"
           render={({ field }) => (
-            <RadioGroup value={field.value?.toString()} onValueChange={(val) => field.onChange(val === "1")} className="flex space-x-4">
+            <RadioGroup value={field.value?.toString()} onValueChange={(val) => field.onChange(val)} className="flex space-x-4">
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="1" id="is_public" />
                 <Label htmlFor="is_public" className="font-normal text-gray-700">

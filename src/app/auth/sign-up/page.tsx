@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -23,6 +23,22 @@ export default function Page() {
     mode: 'onChange', 
     resolver: zodResolver(signUpValidation) 
   });
+
+  // 認証状態の場合、元いたページにリダイレクト
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  useEffect(() => {
+    const session_id = localStorage.getItem("session_id");
+    const user_id = localStorage.getItem("user_id");
+    if (session_id || user_id) {
+      window.history.back();
+      return;
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+  if (isAuthenticated === null) {
+    return null;
+  }
 
   const formSubmit: SubmitHandler<SignUpType> = async (formData) => {
     const loadingToast = toast.loading("アカウント作成中...");

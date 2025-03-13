@@ -4,7 +4,8 @@ export type User = {
   user_name: string;
   account_id: string;
   description: string;
-  is_public: boolean;
+  email: string;
+  is_public: string;
   follower: number;
   follow: number;
 }
@@ -57,5 +58,14 @@ export type PostingType = {
   time_section: string;
   is_public: string;
   title: string;
+  description?: string;
+}
+
+export type UpdateProfileType = {
+  image_path?: string;
+  user_name: string,
+  account_id: string;
+  email: string;
+  is_public: string;
   description?: string;
 }

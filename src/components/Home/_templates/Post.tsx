@@ -32,7 +32,7 @@ export default function Post(props: PostProps) {
   return (
     <Slider {...settings} ref={props.ref} >
       <div className='flex flex-col px-2'>
-        {props.posts.length === 0 ? (
+        {props.posts?.length === 0 ? (
           <div className="flex flex-col items-center justify-center text-center py-16 px-4">
             <div className="text-4xl text-gray-400 mb-4">📷</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">まだ投稿がありません</h2>
@@ -54,7 +54,7 @@ export default function Post(props: PostProps) {
       
       {props.followedPosts && (
         <div className='flex flex-col px-2'>
-          {props.followedPosts.map((followedPost: GetLPPost) => (
+          {props.followedPosts?.map((followedPost: GetLPPost) => (
             <div key={followedPost.id} className="py-4 border-b border-gray-200">
               <PostedUserInf postUserInf={followedPost.post_user_inf} created_at={followedPost.created_at} />
               <div className="overflow-hidden bg-gray-100 rounded-lg aspect-square">
