@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
 import { ArrowLeft, Shield } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+
 import { Button } from "@/components/ui/button"
 
 
