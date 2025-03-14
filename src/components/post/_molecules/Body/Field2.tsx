@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 
+import { TmpUser } from "@/components/profile/_organisms/Body/Profile";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -121,17 +122,8 @@ export default function Field2(props: FieldProps2) {
 type FieldProps2 = {
   control: Control<UpdateProfileType>;
   errors: FieldErrors<UpdateProfileType>;
-  user: TmpProfileEditProps;
+  user: TmpUser;
   selectedImage: string | null;
   setSelectedImage:  Dispatch<SetStateAction<string | null>>;
   setOpen: (value: boolean) => void;
-}
-
-type TmpProfileEditProps = {
-  profile_image_path: string;
-  user_name: string,
-  account_id: string;
-  email: string;
-  is_public: number;
-  description?: string;
 }
