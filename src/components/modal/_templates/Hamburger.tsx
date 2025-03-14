@@ -30,6 +30,10 @@ export default function HamburgerMenu() {
     router.push("/LP");
   };
 
+  const handleTwoAuth = () => {
+    router.push("/two-auth/verify-sent");
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -55,7 +59,7 @@ export default function HamburgerMenu() {
 
             <MenuItem icon={<Settings className="h-6 w-6" />} label="設定とプライバシー" />
             <MenuItem icon={<Lock className="h-6 w-6" />} label="パスワード変更" />
-            <MenuItem icon={<ShieldMinus className="h-6 w-6" />} label="2段階認証" />
+            <MenuItem icon={<ShieldMinus className="h-6 w-6" />} onClick={handleTwoAuth} label="2段階認証" />
             <MenuItem icon={<Moon className="h-6 w-6" />} label="ダークモード" />
             <MenuItem icon={<BookOpen className="h-6 w-6" />} label="使い方ガイド" />
 
