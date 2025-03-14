@@ -48,7 +48,7 @@ export type GetLPPost = {
 export type FFReration = {
   id: number;
   profile_image_path: string;
-  name: string;
+  user_name: string;
   account_id: string;
   description?: string | null;
 }
@@ -62,7 +62,7 @@ export type PostingType = {
 }
 
 export type UpdateProfileType = {
-  image_path?: string;
+  profile_image_path?: string;
   user_name: string,
   account_id: string;
   email: string;

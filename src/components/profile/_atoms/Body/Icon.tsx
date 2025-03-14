@@ -15,7 +15,7 @@ export default function Icon(props: IconProps) {
               width={70}
               height={70}
               alt="UserIcon" 
-              className="object-cover w-full h-full rounded-full aspect-square"
+              className="object-cover rounded-full aspect-square"
             />
           ) : (
             <Image 
@@ -32,8 +32,8 @@ export default function Icon(props: IconProps) {
           <DialogTitle className="sr-only">User Icon</DialogTitle>
           <Image 
             src={imageUrl}
-            width={80}
-            height={80}
+            width={100}
+            height={100}
             alt="UserIcon" 
             className="object-cover w-full h-full rounded-full aspect-square"
           />

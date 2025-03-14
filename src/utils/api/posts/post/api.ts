@@ -3,12 +3,10 @@ const LOCAL_API_URL = 'http://160.251.136.146';
 
 // ➀ 投稿する
 export const postPost = async (postData: FormData, session_id: string | null) => {
-  if (!session_id) {
-    throw new Error("セッションID無効");
-  }
-  console.log("APIに到達したよ。");
-  
   try {
+    if (!session_id) {
+      throw new Error("セッションID無効");
+    }
     const res = await fetch(`${LOCAL_API_URL}/api/post`, {
       method: 'POST',
       // headers: {

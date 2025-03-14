@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import { FFReration } from '@/types/types';
 
 export default function FF(props: FFProps) {
+  console.log(props.followers)
   const settings = {
     dots: false,
     infinite: false,
@@ -32,17 +33,17 @@ export default function FF(props: FFProps) {
             <div className="py-4 border-b border-gray-200">
               <div className="flex items-start">
                 <Image
-                  src={follower.profile_image_path || "/placeholder.svg"}
+                  src={`http://160.251.136.146/storage/${follower.profile_image_path}` || "/placeholder.svg"}
                   width={60}
                   height={60}
-                  alt={`${follower.name}'s avatar`}
-                  className="rounded-full mr-3"
+                  alt={`${follower.user_name}'s avatar`}
+                  className="object-cover rounded-full aspect-square mr-3"
                 />
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="flex items-center">
-                        <p className="font-bold">{follower.name}</p>
+                        <p className="font-bold">{follower.user_name}</p>
                       </div>
                       <p className="text-gray-500 text-sm">{follower.account_id}</p>
                     </div>
@@ -62,17 +63,17 @@ export default function FF(props: FFProps) {
             <div className="py-4 border-b border-gray-200">
               <div className="flex items-start">
                 <Image
-                  src={following.profile_image_path || "/placeholder.svg"}
+                  src={`http://160.251.136.146/storage/${following.profile_image_path}` || "/placeholder.svg"}
                   width={60}
                   height={60}
-                  alt={`${following.name}'s avatar`}
-                  className="rounded-full mr-3"
+                  alt={`${following.user_name}'s avatar`}
+                  className="object-cover rounded-full aspect-square mr-3"
                 />
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="flex items-center">
-                        <p className="font-bold">{following.name}</p>
+                        <p className="font-bold">{following.user_name}</p>
                       </div>
                       <p className="text-gray-500 text-sm">{following.account_id}</p>
                     </div>
