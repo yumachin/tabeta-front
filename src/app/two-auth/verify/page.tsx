@@ -1,9 +1,10 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import React, { useState, useRef, useEffect } from "react"
+
 import { Button } from "@/components/ui/button"
 import { getEmail, createCode, cheackCode } from "@/utils/api/two-auth/api" 
 
