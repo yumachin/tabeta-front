@@ -7,7 +7,7 @@ import MyPost from "../../_atoms/Body/MyPost";
 export default function MyPosts(props: MyPostsProps) {
   return (
     <div>
-      {props.posts?.length === 0 ? (
+      {props.posts.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center py-16 px-4">
           <div className="text-4xl text-gray-400 mb-4">📷</div>
           <h2 className="text-2xl font-bold text-gray-800 mb-4">まだ投稿がありません</h2>
