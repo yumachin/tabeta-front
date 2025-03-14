@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
 import Field2 from "@/components/post/_molecules/Body/Field2";
+import { TmpUser } from "@/components/profile/_organisms/Body/Profile";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { UpdateProfileType } from "@/types/types";
@@ -67,7 +68,7 @@ export function ProfileEdit(props: ProfileEditProps) {
     const postData = new FormData();
     postData.append("json_data", JSON.stringify(addedFormData));
     if (selectedImage) {
-      const file = await urlToFile(selectedImage, "profile_image.jpg");
+      const file = await urlToFile(selectedImage, "profile_image.png");
       console.log("file", file)
       postData.append("photo", file);
     } else {
@@ -117,7 +118,7 @@ export function ProfileEdit(props: ProfileEditProps) {
 };
 
 type ProfileEditProps = {
-  user: TmpProfileEditProps;
+  user: TmpUser;
 }
 
 export type TmpProfileEditProps = {
