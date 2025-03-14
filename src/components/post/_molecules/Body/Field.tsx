@@ -26,7 +26,7 @@ export default function Field(props: FieldProps) {
         <Controller
           control={props.control}
           name="time_section"
-          defaultValue="afternoon" 
+          defaultValue="lunch" 
           render={({ field }) => (
             <Select {...field} onValueChange={field.onChange} >
               <SelectTrigger id="time_section" className="w-full py-5">

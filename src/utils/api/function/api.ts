@@ -78,10 +78,10 @@ export const updateProfile = async (postData: FormData, session_id: string | nul
     }
     const res = await fetch(`${LOCAL_API_URL}/api/update-profile`, {
       method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": session_id
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Authorization": session_id
+      // },
       body: postData
     });
     const data = await res.json();
