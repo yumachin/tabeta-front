@@ -1,5 +1,5 @@
 // const LOCAL_API_URL = 'http://localhost:8000';
-const LOCAL_API_URL = 'http://160.251.136.146';
+const LOCAL_API_URL = 'https://160.251.136.146';
 
 // ➀ すべての投稿を取得
 export const getAllPosts = async () => {

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Dialog, DialogClose, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 export default function Icon(props: IconProps) {
-  const imageUrl = `http://160.251.136.146/storage/${props.image_path}`;
+  const imageUrl = `https://160.251.136.146/storage/${props.image_path}`;
 
   return (
     <div className="flex-shrink-0 mr-6">

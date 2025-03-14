@@ -51,7 +51,7 @@ export default function FieldPhoto2({
       <div className="relative">
         <Avatar className="h-24 w-24 border-2">
           <AvatarImage
-            src={`http://160.251.136.146/storage/${selectedImage}` || "/placeholder.svg"}
+            src={`https://160.251.136.146/storage/${selectedImage}` || "/placeholder.svg"}
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
           <AvatarFallback>写真</AvatarFallback>

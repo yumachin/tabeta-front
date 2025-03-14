@@ -33,7 +33,7 @@ export default function FF(props: FFProps) {
             <div className="py-4 border-b border-gray-200">
               <div className="flex items-start">
                 <Image
-                  src={`http://160.251.136.146/storage/${follower.profile_image_path}` || "/placeholder.svg"}
+                  src={`https://160.251.136.146/storage/${follower.profile_image_path}` || "/placeholder.svg"}
                   width={60}
                   height={60}
                   alt={`${follower.user_name}'s avatar`}
@@ -63,7 +63,7 @@ export default function FF(props: FFProps) {
             <div className="py-4 border-b border-gray-200">
               <div className="flex items-start">
                 <Image
-                  src={`http://160.251.136.146/storage/${following.profile_image_path}` || "/placeholder.svg"}
+                  src={`https://160.251.136.146/storage/${following.profile_image_path}` || "/placeholder.svg"}
                   width={60}
                   height={60}
                   alt={`${following.user_name}'s avatar`}

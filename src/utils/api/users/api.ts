@@ -1,5 +1,5 @@
 // const LOCAL_API_URL = 'http://localhost:8000';
-const LOCAL_API_URL = 'http://160.251.136.146';
+const LOCAL_API_URL = 'https://160.251.136.146';
 
 // ➀ プロフィールを取得
 export const getUserProfile = async (target_user_id: number, user_id: number | null, session_id: string | null) => {

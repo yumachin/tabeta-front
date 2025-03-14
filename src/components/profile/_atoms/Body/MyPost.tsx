@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MyPostType } from "@/types/types";
 
 export default function MyPost(props: MyPostProps) {
-  const imageUrl = `http://160.251.136.146/storage/${props.post.image_path}`;
+  const imageUrl = `https://160.251.136.146/storage/${props.post.image_path}`;
 
   return (
     <div className="relative aspect-square overflow-hidden">

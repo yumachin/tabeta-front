@@ -19,7 +19,7 @@ export default function PostedUserInf(props: PostedUserInfProps) {
     }
   }, []);
 
-  const imageUrl = `http://160.251.136.146/storage/${props.post_user_inf.profile_image_path}`;
+  const imageUrl = `https://160.251.136.146/storage/${props.post_user_inf.profile_image_path}`;
   const redirectUrl = props.pathname === "/LP" ? 
   "/auth/sign-in" : (props.post_user_inf.user_id === user_id) ? "/profile" :`/profile/${props.post_user_inf.user_id}`;
 

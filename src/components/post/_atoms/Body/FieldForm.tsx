@@ -7,7 +7,7 @@ export default function FieldForm(props: FieldFormProps) {
   return (
     <>
       {props.id === 1 ? (
-        <FieldPhoto /> 
+        <FieldPhoto />
       ) : props.id === 5 ? (
         <Textarea id={props.str_id} placeholder="説明を入力" className="w-full min-h-[100px]" />
       ) : (
